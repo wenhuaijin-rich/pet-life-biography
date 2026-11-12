@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>它的人间小传 · 毛孩子人间身份测试</title>
+<style>
+:root{
+  --bg:#FAF5EC;
+  --card:#FFFDF8;
+  --ink:#3D3833;
+  --ink2:#7C7367;
+  --accent:#D97757;
+  --accent-soft:#F6E3D8;
+  --sage:#7A9E7E;
+  --gold:#E8B04B;
+  --line:#EADFCE;
+  --radius:20px;
+  --shadow:0 10px 30px rgba(93,74,54,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow-x:hidden}
+body{
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(217,119,87,.06) 0 120px, transparent 121px),
+    radial-gradient(circle at 88% 8%, rgba(122,158,126,.08) 0 90px, transparent 91px),
+    radial-gradient(circle at 82% 92%, rgba(232,176,75,.07) 0 110px, transparent 111px),
+    var(--bg);
+  color:var(--ink);
+  line-height:1.7;
+  min-height:100vh;
+}
+.wrap{max-width:680px;margin:0 auto;padding:22px 16px 40px}
+.serif{font-family:"Noto Serif SC","Source Han Serif SC","Songti SC","STSong",serif}
+
+/* ---------- 通用组件 ---------- */
+.screen{display:none;animation:fadeIn .4s ease}
+.screen.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:26px 22px;
+}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  border:none;cursor:pointer;
+  font-family:inherit;font-size:16px;font-weight:600;
+  border-radius:999px;padding:13px 30px;
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.btn:active{transform:scale(.96)}
+.btn-primary{
+  background:linear-gradient(135deg,#E08A5F,#D97757);
+  color:#fff;box-shadow:0 6px 18px rgba(217,119,87,.35);
+}
+.btn-primary:hover{box-shadow:0 8px 22px rgba(217,119,87,.45)}
+.btn-ghost{
+  background:transparent;color:var(--ink2);
+  border:1.5px solid var(--line);
+}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
+.btn-block{width:100%}
+.tag{
+  display:inline-block;font-size:12px;letter-spacing:2px;
+  color:var(--accent);background:var(--accent-soft);
+  padding:4px 14px;border-radius:999px;
+}
+.divider{height:1px;background:var(--line);margin:20px 0;border:none}
+
+/* ---------- 免责说明卡片 ---------- */
+.notice{
+  background:#FBF5E8;border:1px dashed #E2CEB2;border-radius:16px;
+  padding:15px 17px;margin-top:20px;
+}
+.notice .n-title{
+  display:flex;align-items:center;gap:9px;font-size:13px;font-weight:700;
+  color:#B0763C;letter-spacing:1.5px;
+}
+.notice .n-title .n-ico{
+  width:20px;height:20px;border-radius:50%;background:#F0DCBA;color:#9A6A2E;
+  display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;
+}
+.notice ul{list-style:none;margin-top:8px;display:grid;gap:5px}
+.notice li{font-size:12.5px;color:#8B8172;line-height:1.85;padding-left:14px;position:relative;text-align:left}
+.notice li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:#DDBB8C}
+.quiz-notice{
+  font-size:12px;color:#9B8F7E;background:#FBF5E8;
+  border:1px solid #EFE3CE;border-radius:999px;
+  padding:7px 14px;text-align:center;margin:-6px 0 18px;letter-spacing:.5px;
+}
+.fresh-line{font-size:12px;color:#A79B8C;text-align:center;margin-top:16px;letter-spacing:.5px}
+.fresh-line b{color:var(--accent)}
+.illus-caption{
+  text-align:center;font-size:12px;color:#A79B8C;letter-spacing:2px;margin:-2px 0 4px;
+}
+#r-illus svg{width:min(360px,88vw);height:auto;display:block;margin:8px auto 0}
+
+/* ---------- 首页 ---------- */
+.hero{text-align:center;padding:34px 20px 26px}
+.hero h1{font-size:34px;letter-spacing:4px;margin:14px 0 6px}
+.hero .sub{color:var(--ink2);font-size:15px;letter-spacing:1px}
+.hero-illus{width:min(340px,84vw);margin:6px auto 0;display:block}
+.intro-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0 6px}
+.step{
+  text-align:center;background:var(--card);border:1px solid var(--line);
+  border-radius:16px;padding:14px 6px;
+}
+.step .n{font-size:20px;display:flex;align-items:center;justify-content:center;min-height:24px}
+.step .t{font-size:12px;color:var(--ink2);margin-top:2px;letter-spacing:0}
+.mode-title{text-align:center;color:var(--ink2);font-size:14px;letter-spacing:3px;margin:22px 0 12px}
+.modes{display:grid;gap:12px}
+.mode{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  background:var(--card);border:1.5px solid var(--line);border-radius:18px;
+  padding:16px 20px;cursor:pointer;transition:all .2s ease;text-align:left;
+  font-family:inherit;font-size:16px;color:var(--ink);
+}
+.mode:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow)}
+.mode .m-name{font-weight:700}
+.mode .m-desc{font-size:13px;color:var(--ink2);font-weight:400;display:block;margin-top:2px}
+.mode .m-go{color:var(--accent);font-size:20px;flex-shrink:0}
+.continue-box{margin-top:16px;text-align:center}
+.disclaim{
+  margin-top:24px;font-size:12px;color:#A79B8C;text-align:center;line-height:1.9;
+  padding:0 8px;
+}
+
+/* ---------- 答题页 ---------- */
+.quiz-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.quiz-top .q-count{font-size:14px;color:var(--ink2);letter-spacing:1px}
+.quiz-top .q-count b{color:var(--accent);font-size:20px}
+.quit-link{font-size:13px;color:#B4A897;background:none;border:none;cursor:pointer;font-family:inherit;text-decoration:underline}
+.progress{
+  height:10px;background:#F0E7D8;border-radius:999px;overflow:hidden;margin-bottom:18px;
+}
+.progress-bar{
+  height:100%;width:0%;
+  background:linear-gradient(90deg,#E8B04B,#D97757);
+  border-radius:999px;transition:width .35s ease;
+}
+.dots{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:22px;justify-content:center}
+.dot{
+  width:26px;height:26px;border-radius:50%;
+  border:1.5px solid var(--line);background:var(--card);
+  font-size:11px;color:var(--ink2);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s ease;font-family:inherit;
+}
+.dot.answered{background:var(--sage);border-color:var(--sage);color:#fff}
+.dot.current{border-color:var(--accent);color:var(--accent);box-shadow:0 0 0 3px rgba(217,119,87,.15)}
+.dot.miss-shake{animation:shake .4s ease;border-color:var(--accent);background:var(--accent-soft)}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.q-card{animation:slideIn .35s ease}
+@keyframes slideIn{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+.q-text{font-size:20px;font-weight:700;margin:6px 0 20px;letter-spacing:.5px}
+.opts{display:grid;gap:12px}
+.opt{
+  display:flex;align-items:flex-start;gap:12px;text-align:left;
+  background:#FDFAF3;border:1.5px solid var(--line);border-radius:16px;
+  padding:14px 16px;cursor:pointer;font-family:inherit;font-size:15.5px;color:var(--ink);
+  transition:all .18s ease;line-height:1.55;
+}
+.opt:hover{border-color:#E0B89A;transform:translateX(3px)}
+.opt .letter{
+  flex-shrink:0;width:26px;height:26px;border-radius:50%;
+  background:#F0E7D8;color:var(--ink2);font-size:13px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;margin-top:1px;
+  transition:all .18s ease;
+}
+.opt.selected{border-color:var(--accent);background:var(--accent-soft)}
+.opt.selected .letter{background:var(--accent);color:#fff}
+.quiz-nav{display:flex;gap:12px;margin-top:22px}
+.quiz-nav .btn{flex:1;padding:13px 10px}
+.toast{
+  position:fixed;left:50%;bottom:36px;transform:translateX(-50%) translateY(20px);
+  background:#3D3833;color:#FFF7EA;font-size:14px;
+  padding:11px 22px;border-radius:999px;opacity:0;pointer-events:none;
+  transition:all .3s ease;z-index:99;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.25);
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ---------- 结果页 ---------- */
+.result-head{text-align:center;padding:10px 0 4px}
+.result-head .r-tag{margin-bottom:10px}
+.result-name{font-size:40px;letter-spacing:6px;margin:2px 0 4px}
+.result-slogan{color:var(--ink2);font-size:15px;letter-spacing:2px}
+.result-illus{width:min(300px,72vw);margin:10px auto;display:block}
+.section-title{
+  display:flex;align-items:center;gap:10px;
+  font-size:17px;font-weight:700;letter-spacing:2px;margin:26px 0 10px;
+}
+.section-title::after{content:"";flex:1;height:1px;background:var(--line)}
+.section-title .st-icon{width:26px;height:26px;background:var(--accent-soft);color:var(--accent);border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:14px;letter-spacing:0}
+.report-p{font-size:15.5px;color:#55504A;text-align:justify}
+.story-p{
+  font-size:15px;color:#6B6459;background:#FBF6EA;
+  border-left:3px solid var(--gold);
+  padding:12px 14px;border-radius:0 12px 12px 0;text-align:justify;
+}
+.bars{display:grid;gap:14px;margin-top:6px}
+.bar-row .bar-label{display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:5px}
+.bar-row .bar-label b{color:var(--accent)}
+.bar-track{height:12px;background:#F0E7D8;border-radius:999px;overflow:hidden}
+.bar-fill{
+  height:100%;border-radius:999px;width:0;
+  transition:width 1s cubic-bezier(.22,1,.36,1);
+}
+.bar-note{font-size:12px;color:#A79B8C;margin-top:10px}
+.tips{list-style:none;display:grid;gap:10px}
+.tips li{
+  display:flex;gap:10px;font-size:15px;color:#55504A;
+  background:#FDFAF3;border:1px dashed var(--line);
+  padding:11px 14px;border-radius:14px;
+}
+.tips .tip-no{
+  flex-shrink:0;color:var(--accent);font-weight:700;font-family:Georgia,serif;
+}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.chip{
+  background:var(--accent-soft);color:#B05C3B;font-size:13.5px;
+  padding:8px 16px;border-radius:999px;
+}
+.chip b{margin-right:6px}
+.result-btns{display:flex;gap:12px;margin-top:28px}
+.result-btns .btn{flex:1;padding:13px 10px}
+.footer-disclaim{
+  margin-top:26px;text-align:center;font-size:12px;color:#B4A897;line-height:1.9;
+}
+@media (max-width:480px){
+  .hero h1{font-size:27px;letter-spacing:3px}
+  .q-text{font-size:18px}
+  .result-name{font-size:32px;letter-spacing:4px}
+  .card{padding:20px 16px}
+  .intro-steps{gap:8px}
+  .step{padding:10px 4px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===================== 首页 ===================== -->
+  <section id="screen-home" class="screen active">
+    <div class="hero">
+      <span class="tag serif">人 间 观 察 局 · 特 别 企 划</span>
+      <h1 class="serif">它的人间小传</h1>
+      <p class="sub">褪去毛茸茸的外壳，TA 在人间会是什么身份？</p>
+      <svg class="hero-illus" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="月光小屋里，一只猫和一只狗并肩看月亮的原创插画">
+        <defs>
+          <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#FDF0DC"/><stop offset="1" stop-color="#F7E4CE"/>
+          </linearGradient>
+          <linearGradient id="moonG" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#F8D789"/><stop offset="1" stop-color="#E8B04B"/>
+          </linearGradient>
+          <clipPath id="heroClip"><rect x="5" y="5" width="310" height="230" rx="30"/></clipPath>
+        </defs>
+        <g clip-path="url(#heroClip)">
+          <rect x="5" y="5" width="310" height="230" fill="url(#skyG)"/>
+          <path d="M5 168 q44 -50 88 -16 q36 -44 80 -8 q46 -48 137 10 v63 H5 z" fill="#DDE8D3" opacity=".9"/>
+          <path d="M5 192 q52 -32 102 -6 q48 -28 94 4 q52 -26 114 10 v35 H5 z" fill="#C7DAC0" opacity=".9"/>
+          <circle cx="253" cy="55" r="36" fill="#F6DFA6" opacity=".35"/>
+          <circle cx="253" cy="55" r="26" fill="url(#moonG)"/>
+          <circle cx="245" cy="47" r="5" fill="#FBEFC9" opacity=".8"/>
+          <circle cx="260" cy="62" r="3.5" fill="#FBEFC9" opacity=".8"/>
+          <g fill="#FFF9EE" opacity=".85">
+            <ellipse cx="82" cy="52" rx="22" ry="8"/><ellipse cx="96" cy="48" rx="15" ry="9"/>
+            <ellipse cx="196" cy="34" rx="17" ry="6"/><ellipse cx="206" cy="31" rx="11" ry="7"/>
+          </g>
+          <g fill="#E8B04B" opacity=".75">
+            <circle cx="42" cy="34" r="2"/><circle cx="126" cy="26" r="1.6"/><circle cx="170" cy="56" r="2"/>
+            <circle cx="292" cy="104" r="1.6"/><circle cx="30" cy="96" r="1.5"/>
+          </g>
+          <g stroke="#D9A24B" stroke-width="1.6" stroke-linecap="round" opacity=".7">
+            <path d="M148 40 v8 M144 44 h8"/><path d="M286 74 v7 M282.5 77.5 h7"/>
+          </g>
+          <g transform="translate(24,118)">
+            <path d="M2 30 L30 8 L58 30 z" fill="#C98A6B"/>
+            <rect x="9" y="30" width="42" height="38" rx="3" fill="#F3D9B8"/>
+            <rect x="24" y="43" width="13" height="13" rx="2" fill="#F8D789"/>
+            <path d="M30 43 v13 M24 50 h13" stroke="#D9A96A" stroke-width="1.6"/>
+            <rect x="14" y="54" width="10" height="14" rx="2" fill="#C98A6B"/>
+          </g>
+          <g transform="translate(278,132)">
+            <rect x="-2" y="18" width="4" height="26" rx="2" fill="#A98A63"/>
+            <circle cx="0" cy="12" r="17" fill="#9FB98F"/><circle cx="-10" cy="18" r="11" fill="#8FAE82"/>
+            <circle cx="11" cy="19" r="10" fill="#B4C9A2"/>
+          </g>
+          <g stroke="#8FAE82" stroke-width="2" stroke-linecap="round">
+            <path d="M62 214 q-3 -8 -6 -12 M62 214 q3 -7 7 -10"/>
+            <path d="M258 218 q-3 -8 -6 -12 M258 218 q3 -7 7 -10"/>
+          </g>
+          <g fill="#E9A0A0"><circle cx="70" cy="200" r="3"/><circle cx="264" cy="204" r="3"/></g>
+          <ellipse cx="118" cy="212" rx="52" ry="9" fill="#E3D2B4"/>
+          <path d="M84 208 q-6 -44 34 -50 q40 -6 44 26 q3 24 -10 24 z" fill="#E8A97E"/>
+          <path d="M162 190 q26 4 22 -26 q-2 -14 -12 -14 q8 10 2 20 q-6 10 -14 8 z" fill="#E8A97E"/>
+          <circle cx="118" cy="138" r="38" fill="#F2BE93"/>
+          <path d="M90 114 l-6 -26 24 12 z" fill="#F2BE93"/><path d="M92 112 l-3 -16 14 7 z" fill="#E38B6B"/>
+          <path d="M146 114 l6 -26 -24 12 z" fill="#F2BE93"/><path d="M144 112 l3 -16 -14 7 z" fill="#E38B6B"/>
+          <path d="M104 140 q4 5 8 0" stroke="#5A4634" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M124 140 q4 5 8 0" stroke="#5A4634" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M114 152 q4 4 8 0" stroke="#5A4634" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <g stroke="#B97F52" stroke-width="2" stroke-linecap="round">
+            <line x1="76" y1="138" x2="94" y2="140"/><line x1="76" y1="148" x2="94" y2="146"/>
+            <line x1="142" y1="138" x2="160" y2="140"/><line x1="142" y1="148" x2="160" y2="146"/>
+          </g>
+          <ellipse cx="98" cy="148" rx="5" ry="3" fill="#E89486" opacity=".55"/>
+          <ellipse cx="138" cy="148" rx="5" ry="3" fill="#E89486" opacity=".55"/>
+          <path d="M92 172 q26 12 52 0" fill="none" stroke="#D97757" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="118" cy="178" r="4" fill="#E8B04B"/>
+          <ellipse cx="220" cy="212" rx="56" ry="9" fill="#E3D2B4"/>
+          <path d="M182 208 q-4 -48 38 -50 q42 -2 40 28 q-2 22 -12 22 z" fill="#C9A876"/>
+          <circle cx="220" cy="136" r="42" fill="#D8B88A"/>
+          <path d="M182 114 q-14 28 2 50 q10 2 10 -8 q-8 -18 -2 -38 z" fill="#B08F5C"/>
+          <path d="M258 114 q14 28 -2 50 q-10 2 -10 -8 q8 -18 2 -38 z" fill="#B08F5C"/>
+          <circle cx="206" cy="134" r="3.8" fill="#3D342A"/><circle cx="234" cy="134" r="3.8" fill="#3D342A"/>
+          <ellipse cx="220" cy="150" rx="8.5" ry="6.5" fill="#3D342A"/>
+          <path d="M220 157 v5 M220 162 q-6 6 -11 2 M220 162 q6 6 11 2" stroke="#3D342A" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+          <ellipse cx="196" cy="146" rx="5" ry="3" fill="#E89486" opacity=".45"/>
+          <ellipse cx="244" cy="146" rx="5" ry="3" fill="#E89486" opacity=".45"/>
+          <path d="M190 172 q30 12 60 0" fill="none" stroke="#7A9E7E" stroke-width="5" stroke-linecap="round"/>
+          <path d="M160 74 q-6 -10 -14 -3 q-6 6 3 14 l11 9 11 -9 q9 -8 3 -14 q-8 -7 -14 3 z" fill="#D97757" opacity=".85"/>
+          <g fill="#C9A876" opacity=".7">
+            <circle cx="48" cy="184" r="3.5"/><circle cx="42" cy="177" r="2"/><circle cx="48" cy="176" r="2"/><circle cx="54" cy="177" r="2"/>
+          </g>
+        </g>
+        <rect x="5" y="5" width="310" height="230" rx="30" fill="none" stroke="#EAD8BC" stroke-width="2"/>
+      </svg>
+    </div>
+
+    <div class="intro-steps">
+      <div class="step"><div class="n"><svg viewBox="0 0 24 24" width="22" height="22"><g fill="#D97757"><ellipse cx="12" cy="15" rx="4.2" ry="3.4"/><circle cx="6.5" cy="10" r="1.8"/><circle cx="10" cy="7.5" r="1.8"/><circle cx="14" cy="7.5" r="1.8"/><circle cx="17.5" cy="10" r="1.8"/></g></svg></div><div class="t">观察TA的日常</div></div>
+      <div class="step"><div class="n"><svg viewBox="0 0 24 24" width="22" height="22"><g fill="none" stroke="#7A9E7E" stroke-width="2" stroke-linecap="round"><rect x="5" y="4" width="14" height="16" rx="2.5"/><line x1="9" y1="9.5" x2="15" y2="9.5"/><line x1="9" y1="13.5" x2="15" y2="13.5"/></g></svg></div><div class="t">撰写人间人设</div></div>
+      <div class="step"><div class="n"><svg viewBox="0 0 24 24" width="22" height="22"><g fill="none" stroke="#E8B04B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M4 15 l4.5 -4 4 3.5 3 -2.5 4.5 4"/><circle cx="9.5" cy="9.5" r="1.4" fill="#E8B04B" stroke="none"/></g></svg></div><div class="t">解锁主题插画</div></div>
+    </div>
+
+    <div class="card">
+      <p class="report-p" style="margin-top:2px">
+        它在你家只会撒娇、淘气、发呆。但如果褪去毛茸茸的外壳，来到人间——
+        是山野隐士、自由旅人、慵懒艺术家，还是慵懒富二代？
+        回答几道轻松的小题，我们为它撰写一份<b>文字人设报告</b>，
+        并配上一张<b>按人设主题绘制的原创插画</b>。插画为通用示意，
+        不对应任何一只真实的宠物。答案如实作答即可，结果由你的选择实时计算而成。
+      </p>
+      <hr class="divider">
+      <div class="mode-title serif">— 选 择 一 场 测 试 的 长 度 —</div>
+      <div class="modes">
+        <button class="mode" data-count="5">
+          <span><span class="m-name"> espresso 快测 · 5 题</span><span class="m-desc">一口闷，先尝为快</span></span>
+          <span class="m-go">→</span>
+        </button>
+        <button class="mode" data-count="10">
+          <span><span class="m-name"> latte 标准测 · 10 题</span><span class="m-desc">刚刚好的午后时光</span></span>
+          <span class="m-go">→</span>
+        </button>
+        <button class="mode" data-count="15">
+          <span><span class="m-name"> brunch 深度测 · 15 题</span><span class="m-desc">慢慢聊，把它看个通透</span></span>
+          <span class="m-go">→</span>
+        </button>
+      </div>
+      <div class="continue-box" id="continue-box" style="display:none">
+        <button class="btn btn-ghost" id="btn-continue">继续上次未完成的测试</button>
+      </div>
+      <div class="continue-box" id="view-last-box" style="display:none">
+        <button class="btn btn-ghost" id="btn-view-last">查看上次的结果</button>
+      </div>
+      <p class="fresh-line" id="fresh-line"></p>
+    </div>
+
+    <div class="notice">
+      <div class="n-title"><span class="n-ico">i</span>开始前的小说明 · 免责声明</div>
+      <ul>
+        <li>本测试是娱乐向原创自评小游戏，仅供趣味互动，<b>不构成任何专业诊断、评估或科学结论</b>，也不涉及医疗、健康与行为建议。</li>
+        <li>题目、人设与插画均为原创文艺设定，请勿以此判断宠物的健康或行为；相关疑问请咨询专业兽医或宠物行为顾问。</li>
+        <li>页面插画为按人设主题绘制的<b>通用示意插画</b>；本测试不含上传照片、图片识别或形象定制功能，插画并非依据你家宠物的照片生成。</li>
+        <li>结果完全由你的选择实时计算，不随机生成；所有记录仅保存在本机浏览器，不上传、不收集个人信息。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== 答题页 ===================== -->
+  <section id="screen-quiz" class="screen">
+    <div class="quiz-top">
+      <span class="q-count">第 <b id="q-now">1</b> / <span id="q-total">10</span> 题</span>
+      <button class="quit-link" id="btn-quit">离开测试</button>
+    </div>
+    <div class="progress"><div class="progress-bar" id="progress-bar"></div></div>
+    <div class="quiz-notice">纯属娱乐 · 原创自评 · 本次优先抽新题</div>
+    <div class="dots" id="dots"></div>
+    <div class="card q-card" id="q-card">
+      <span class="tag" id="q-theme">日常观察</span>
+      <p class="q-text" id="q-text">……</p>
+      <div class="opts" id="opts"></div>
+      <div class="quiz-nav">
+        <button class="btn btn-ghost" id="btn-prev">← 上一题</button>
+        <button class="btn btn-primary" id="btn-next">下一题 →</button>
+      </div>
+    </div>
+    <div class="notice">
+      <div class="n-title"><span class="n-ico">i</span>免责说明 · 温馨提示</div>
+      <ul>
+        <li>本测试为娱乐向原创自评，<b>不构成任何专业诊断、评估或科学结论</b>，不涉及医疗与行为建议。</li>
+        <li>本页所有题目均为趣味设定，不对应任何真实评估标准；放松作答即可，答案没有对错。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== 结果页 ===================== -->
+  <section id="screen-result" class="screen">
+    <div class="card">
+      <div class="result-head">
+        <div class="r-tag"><span class="tag serif">人 设 报 告 已 出 炉</span></div>
+        <div class="result-name serif" id="r-name">……</div>
+        <div class="result-slogan serif" id="r-slogan"></div>
+      </div>
+      <div id="r-illus"></div>
+      <p class="illus-caption" id="r-caption"></p>
+      <div class="section-title"><span class="st-icon serif">传</span>人设报告</div>
+      <p class="report-p" id="r-report"></p>
+      <div class="section-title"><span class="st-icon serif">事</span>性格故事</div>
+      <p class="story-p" id="r-story"></p>
+      <div class="section-title"><span class="st-icon serif">衡</span>维度分析</div>
+      <div class="bars" id="r-bars"></div>
+      <p class="bar-note">* 维度由你每一题的选择累计而成，改一道题，数值就会随之变化。</p>
+      <div class="section-title"><span class="st-icon serif">行</span>行动建议</div>
+      <ul class="tips" id="r-tips"></ul>
+      <div class="section-title"><span class="st-icon serif">彩</span>人间彩蛋</div>
+      <div class="chips" id="r-chips"></div>
+      <div class="result-btns">
+        <button class="btn btn-ghost" id="btn-edit">返回修改答案</button>
+        <button class="btn btn-primary" id="btn-retry">重新测试</button>
+      </div>
+    </div>
+    <div class="notice">
+      <div class="n-title"><span class="n-ico">i</span>关于这份报告 · 免责声明</div>
+      <ul>
+        <li>本报告为娱乐向原创内容，属趣味自评，<b>不构成专业诊断、评估或科学结论</b>，也不作为任何养宠建议。</li>
+        <li>人设、故事、维度与建议均为文艺化表达，请勿据此判断宠物健康或行为；相关疑问请咨询专业兽医或宠物行为顾问。</li>
+        <li>报告所配插画为按人设主题绘制的<b>原创通用示意插画</b>，非依据宠物照片定制，不代表宠物真实长相。</li>
+        <li>结果由本次答案实时计算，修改答案后会重新生成；记录仅保存在本机浏览器。</li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+/* =========================================================
+ * 它的人间小传 —— 单文件原创测试
+ * 题库 200 题 · 分层抽题 + 已做题记忆 · 结果由答案实时计算
+ * ========================================================= */
+
+/* ---------- 题库 ---------- */
+const BANK=[
+["换新口味的粮，它的第一反应是？",[["闻一下，转身离开","hx"],["埋头炫完，还把碗舔得锃亮","f2"],["盯着你，仿佛在问：就这？","wk"],["先吃两口，再跑去告诉全家","sun"]]],
+["你吃饭时，它的表现是？",[["端坐凝视，很有气场","wk"],["撒娇三连，轮番上阵","warm"],["完全不感兴趣，高冷到底","hx"],["试图上桌，餐桌礼仪先放一放","lr"]]],
+["它最爱的进餐时间是？",[["清晨悄悄加餐，不声不响","lr"],["跟着你的作息，规律干饭","jw"],["饿了才吃，从不将就","art"],["随时随地，来者不拒","sun"]]],
+["它对零食的态度是？",[["零食是什么？没兴趣","hx"],["有就吃，没有拉倒","f2"],["为了零食，能表演十八般小才艺","sun"],["只吃看起来有格调的那款","art"]]],
+["它喝水的方式是？",[["必须流动水，仪式感拉满","art"],["随便喝喝，毫不讲究","f2"],["悄悄喝你杯子里的，主打新鲜","lr"],["定时定量，养生达人","jw"]]],
+["碗里的粮只剩最后一口，它会？",[["怎么也不吃，剩一口是原则","hx"],["卷干净，一粒不剩","jw"],["用眼神暗示你续费","wk"],["吃不吃，全看心情","art"]]],
+["你在吃外卖，它会？",[["闻都不闻，保持清高","hx"],["在门口蹲守，像在等一场演出","sun"],["精准锁定最贵的那份","f2"],["浅浅参与一下味道，点到为止","art"]]],
+["它的干饭速度是？",[["慢工出细活，一粒一粒品","art"],["风卷残云，效率至上","jw"],["吃两口，看看风景，再吃两口","lr"],["干饭五分钟，休息两小时","f2"]]],
+["它挑食吗？",[["从不挑食，干饭巨星","sun"],["挑，但挑得很有品味","art"],["只吃固定几样，很忠诚","warm"],["看当天心情和天气","lr"]]],
+["如果它开一家餐厅，风格是？",[["深夜食堂，只接待熟客","hx"],["网红融合菜，概念先行","art"],["自助餐，管饱管够","f2"],["连锁快餐，标准化运营","jw"]]],
+["它的经典睡姿是？",[["四脚朝天，毫无防备","f2"],["蜷成一团，自带安全感课题","hx"],["优雅侧卧，像一幅油画","art"],["随时能睡，站着都能眯","lr"]]],
+["它的睡眠时长是？",[["一天二十小时，睡是主业","f2"],["睡醒模式随机刷新","lr"],["按点睡按点起，比闹钟准","jw"],["白天补觉，夜里营业","art"]]],
+["它最爱睡的位置是？",[["你的枕头，主卧归属权在握","f2"],["阳光最好的那块地板","art"],["纸箱与缝隙，一切幽暗角落","hx"],["哪里都能睡，四海为家","lr"]]],
+["半夜你翻身，它会？",[["睁眼看你一眼，继续睡","hx"],["以为要开饭，瞬间清醒","jw"],["顺势贴过来接着睡","warm"],["睡得太沉，毫无反应","f2"]]],
+["它做梦时会？",[["小声哼唧，剧情丰富","sun"],["腿抖，仿佛在草原狂奔","lr"],["纹丝不动，睡功深厚","jw"],["突然惊醒，环顾四周，故作镇定","wk"]]],
+["早晨叫醒你的方式是？",[["踩奶加呼噜，温柔呼唤","warm"],["爪子拍脸，简单直接","wk"],["在床头制造点小动静，温柔唤醒","lr"],["蹲在床头凝视，用意念唤醒","hx"]]],
+["午后阳光正好，它会？",[["把自己晒成一块太阳饼","f2"],["在光斑里追自己的影子","sun"],["找阴凉处睡回笼觉","hx"],["晒着晒着开始打呼，音量惊人","lr"]]],
+["它的起床气是？",[["没有起床气，睁眼就是开心","sun"],["起床气很重，请勿靠近","hx"],["醒来先梳洗，精致主义","art"],["醒来第一件事：干饭","jw"]]],
+["周末全家都在补觉，它会？",[["跟着一起睡，天经地义","f2"],["独自巡一圈，像个值班经理","wk"],["安静窝在你身边，寸步不离","warm"],["趁机去干平时不敢干的事","lr"]]],
+["用一个词形容它的睡眠质量？",[["雷打不动","jw"],["随时待命","wk"],["岁月静好","f2"],["梦里什么都有","art"]]],
+["它最爱的玩具类型是？",[["逗猫棒或飞盘，运动型","lr"],["纸箱——玩具的尽头是纸箱","hx"],["会发声的，越吵越爱","sun"],["新玩具先观察三天再定","wk"]]],
+["它玩起来是什么画风？",[["全速跑酷，顺带带倒两个靠垫","lr"],["优雅地扑向玩具，招式讲究","art"],["三分钟热度，然后去睡","f2"],["能自己玩一下午，不需要你","hx"]]],
+["你扔出玩具，它会？",[["飞奔而去，使命必达","sun"],["用眼神目送，装作没看见","hx"],["看一眼，决定晚点再说","f2"],["叼回来放你脚边：再来一次！","warm"]]],
+["它对移动光点的态度是？",[["疯狂追捕，绝不认输","jw"],["追两下就腻：都是套路","wk"],["玩得像在跳现代舞","art"],["怀疑那是另一个次元的东西","hx"]]],
+["新买的贵玩具和快递纸箱，它选？",[["当然是纸箱","hx"],["都玩，雨露均沾","f2"],["玩具，毕竟花了钱","wk"],["纸箱，但要在里面搞创作","art"]]],
+["它的自嗨方式是？",[["追自己的尾巴，转圈圈","sun"],["对着空气扑玩，有个想象中的小伙伴","lr"],["看窗外发呆，眼神深邃","art"],["翻肚皮蹭地毯，很会享受","f2"]]],
+["玩到兴奋巅峰时，它会？",[["原地起跳，空中转体","lr"],["发出奇怪的叫声，像在吟诗","art"],["跑来找你求表扬","sun"],["突然冷静下来，深藏功与名","wk"]]],
+["它的玩具库存是？",[["遍布全屋，像个游乐场","f2"],["就那几个旧的，很念旧","hx"],["有几件精品，件件是心头好","art"],["不断解锁旧玩具的新玩法","jw"]]],
+["宠物奥运会，它报什么项目？",[["百米冲刺","lr"],["自由体操——翻肚皮那种","f2"],["专注观察，稳稳拿高分","wk"],["艺术体操，要评委打分的那种","art"]]],
+["玩具被你藏起来（它输了），它会？",[["再接再厉，把家里翻找一圈","jw"],["蹲在原地安静一会儿","hx"],["转头去干别的，拿得起放得下","f2"],["委屈巴巴地看着你","warm"]]],
+["家里来客人，它会？",[["躲进床底，谢绝会客","hx"],["主动营业，全员招呼","sun"],["远处观察，决定是否接纳","wk"],["在客人身边转悠，悄悄收买人心","warm"]]],
+["见到同类，它会？",[["点头之交，保持距离","hx"],["热情打招呼，社牛本牛","sun"],["暗中观察，评估实力","wk"],["想去认识又犹豫，纠结半天","lr"]]],
+["它的社交风格是？",[["独来独往，强者不需要朋友","hx"],["八面玲珑，小区顶流","sun"],["只有两三个铁杆，深交为主","wk"],["跟谁都能玩，但都不走心","lr"]]],
+["陌生人的手伸过来，它会？",[["后退一步，保持体面","hx"],["主动闻闻，礼貌回应","warm"],["直接躺下求摸，毫无架子","sun"],["先闻后蹭再收买，一套流程走完","f2"]]],
+["多宠家庭里，它的地位是？",[["稳稳的大家长","wk"],["佛系随和，谁来都让","f2"],["合群的小跟班，其乐融融","warm"],["表面随和，私下悄悄努力","jw"]]],
+["它闹小情绪时，会？",[["安静独处一会儿，暂时不想互动","hx"],["当面淘气一下，直球表态","lr"],["幽怨地叫，句句带情绪","art"],["就地一躺，用躺平表达态度","f2"]]],
+["视频通话里亲戚想看它，它会？",[["非常给面子，镜头前营业","sun"],["离开镜头范围，拒绝出镜","hx"],["恰好入镜，但背对镜头","art"],["对着屏幕歪头：对面是谁？","wk"]]],
+["它和邻居宠物的关系是？",[["隔窗互相打量，很有默契","jw"],["互不理睬，各自安好","hx"],["隔着栅栏成了朋友","warm"],["经常隔窗对话，像老朋友","lr"]]],
+["朋友想撸一把，它的收费标准是？",[["免费，还倒贴呼噜","warm"],["要付费，零食结算","f2"],["预约制，看缘分","art"],["仅限老客户","wk"]]],
+["它的朋友圈大概是？",[["全是风景照，无人出镜","hx"],["九宫格自拍，营业感满满","sun"],["深夜文案，配上弦乐","art"],["晒美食晒生活，岁月静好","f2"]]],
+["你加班晚归，到家后发现它？",[["在门口等你，见到就哼唧","warm"],["照常睡觉，人间清醒","wk"],["用一点小淘气表达思念","lr"],["淡淡的，仿佛什么都没发生","hx"]]],
+["你难过的时候，它会？",[["安静靠过来，下巴搁你腿上","warm"],["继续睡觉：情绪稳定的人不惯着谁","wk"],["表演节目，试图逗你笑","sun"],["歪头看着你，仿佛都懂","art"]]],
+["你叫它名字，它会？",[["秒回，飞奔而来","sun"],["耳朵动一下，表示收到","f2"],["看你一眼，再叫就不理了","hx"],["慢悠悠走过来，先看有没有小零食","wk"]]],
+["它表达爱的方式是？",[["一直贴着你，人形挂件","warm"],["给你叼来它最宝贝的玩具","sun"],["睡在你够不到的高处，遥遥相望","hx"],["在你键盘上踩来踩去，强制互动","art"]]],
+["你打电话时，它会？",[["热情插话，存在感满满","sun"],["安静陪伴，深谙分寸","warm"],["趁机搞事情，制造话题","lr"],["走到你看不见的地方，享受独处","hx"]]],
+["你工作学习时，它在？",[["旁边守着，像个监工","wk"],["睡在你和屏幕之间，障碍式陪伴","warm"],["自顾自玩耍，互不打扰","hx"],["在你的稿纸上踩一排梅花印，算署名","art"]]],
+["它最听不得的一句话是？",[["「出门洗香香」","hx"],["「零食没有了」","f2"],["「出去玩」——开心到原地转圈","lr"],["「谁是小可爱」——当场害羞","sun"]]],
+["它对你的朋友和家人的态度？",[["一视同仁，端水大师","wk"],["只粘你一个人，双向奔赴","warm"],["谁给吃的跟谁走","f2"],["谁都懒得理，除了饭点","hx"]]],
+["如果它会说话，最常说的是？",[["「饭呢？」","jw"],["「爱我吗？」","warm"],["「别烦我。」","hx"],["「我有一个大胆的想法。」","lr"]]],
+["它闹小情绪后，多久会好？",[["五分钟，来得快去得也快","sun"],["半小时，给你台阶下","warm"],["一天起步，说到做到","hx"],["没有停顿，哼两声就翻篇","lr"]]],
+["打雷或吸尘器响起，它会？",[["毫无波澜，见惯风浪","wk"],["悄悄躲进被窝，安心待着","hx"],["凑上去研究声源，胆子很大","lr"],["愣一下，马上就恢复，心很大","f2"]]],
+["出门洗香香的路上，它会？",[["一路哼唧，戏很足","art"],["竖起耳朵，认真打量","hx"],["淡定围观，仿佛去春游","f2"],["不停看你，寻求安全感","warm"]]],
+["家具换了新位置，它会？",[["绕着走三圈，重新测绘地图","wk"],["立刻上去打卡，留下自己的小记号","jw"],["兴奋地探索新大陆","lr"],["有点懵，但很快就适应","sun"]]],
+["你独处一天后回家，发现它？",[["睡了一整天，毫发无损","f2"],["在门口蹲着，眼神幽怨","warm"],["留下一点「行为艺术」","art"],["一切正常，但粮被提前吃完了","jw"]]],
+["它的日常情绪底色是？",[["平静如水，喜怒不形于色","hx"],["快乐很简单，到处都好玩","sun"],["细腻柔软，情绪有层次","art"],["松弛，没有什么烦恼","f2"]]],
+["修剪指甲时，它会？",[["全程配合，非常体面","wk"],["有点扭捏，但很配合","warm"],["哼唧连声，戏很足","art"],["默默记下，当晚加练了一会儿","jw"]]],
+["它小吃醋时，会？",[["挤到你和手机中间","warm"],["大声宣告存在感","sun"],["安静旁观，心里默默记着","hx"],["搞出点动静，欢快地刷存在感","lr"]]],
+["遇到体型更大的朋友，它会？",[["绕道走，君子不立危墙","wk"],["照样上去打招呼，大方又从容","sun"],["隔空回个招呼，礼貌又大方","jw"],["躲到你身后，寻求庇护","warm"]]],
+["它开心时最明显的变化是？",[["呼噜震天或尾巴摇成风扇","sun"],["瞳孔放大，开始疯狂跑酷","lr"],["变得格外粘人","warm"],["眼神温柔，安静地陪着你","art"]]],
+["用一种天气形容它的性格？",[["多云转晴，偶有雷阵雨","art"],["四季如春","sun"],["深海无风带","hx"],["风过境，但心里是晴的","lr"]]],
+["它最喜欢家里的哪个角落？",[["窗台，观景第一排","art"],["沙发正中，C位","f2"],["衣柜深处，秘密基地","hx"],["门口，守门人专属位","wk"]]],
+["它对家里绿植的态度是？",[["绕道走，互不干扰","hx"],["频繁试探，屡教不改","lr"],["静静欣赏，很有生活美学","art"],["嫌它挡路，予以处理","jw"]]],
+["它的「个人领地」布置风格是？",[["极简风，一块毯子就够了","hx"],["堆满玩具，幸福地杂乱","f2"],["采光极佳，适合发呆","art"],["功能性拉满，动线讲究","wk"]]],
+["它如何确认「这是我的家」？",[["用脸颊蹭遍所有桌角","warm"],["睡遍每个房间，轮流入住","f2"],["在门口迎接，像个迎宾员","wk"],["把玩具藏进沙发底，攒私房","lr"]]],
+["它最怕你动它的？",[["玩具收藏","f2"],["碗——位置都不能变","wk"],["窝，有它的气味才算家","warm"],["窗边的观景位","art"]]],
+["新沙发到家第一天，它会？",[["第一个上去，按下自己的小爪印","jw"],["先观察，再优雅入驻","art"],["直接睡下，理所当然","f2"],["闻了闻，还是觉得旧窝好","hx"]]],
+["它对镜子里自己的态度是？",[["以为是朋友，热情打招呼","sun"],["冷冷瞥一眼，见过世面","hx"],["反复确认，在做研究","wk"],["对着镜子摆姿势，自我欣赏","art"]]],
+["它毛发在家具上的分布说明什么？",[["满屋都是它温柔的气息","f2"],["集中在你的衣服上，爱的证据","warm"],["在角落悄悄堆积，不让人发现","hx"],["分布随性，像一幅抽象画","art"]]],
+["它对扫地机器人的态度是？",[["骑上去绕屋一圈","lr"],["当成重点关注对象，全程跟随","jw"],["保持距离，礼貌围观","wk"],["无视它，宠辱不惊","hx"]]],
+["如果给它一面空墙，它会？",[["留下爪印签名","art"],["靠着睡觉，物尽其用","f2"],["盯着墙看，看见你看不见的东西","hx"],["背对墙坐下，照看自己的小天地","wk"]]],
+["出门前，它会？",[["主动蹲在门口，迫不及待","lr"],["消失不见，开始躲猫猫","hx"],["平静等待，随遇而安","wk"],["兴奋转圈，以为要去玩","sun"]]],
+["到了陌生环境，它第一件事是？",[["先站稳观察，打量一番","wk"],["原地躺下，像在自己家","f2"],["贴着你，寸步不离","warm"],["四处探索，收不住了","lr"]]],
+["外面的世界对它来说是？",[["有点陌生的大天地，还是家里好","hx"],["大型游乐场","lr"],["社交场，全是潜在朋友","sun"],["取景地，处处是风景","art"]]],
+["坐车（背包或航空箱）时，它会？",[["安静睡去，旅途要补觉","f2"],["一路哼唧，发表意见","art"],["透过缝隙观察路况","wk"],["兴奋得像在探险","lr"]]],
+["回家后它的第一件事是？",[["瘫倒在地板，累但快乐","lr"],["直奔饭碗","jw"],["绕屋三圈，确认一切如常","wk"],["窝回自己的角落，仿佛从未离开","hx"]]],
+["如果它来到人间，想住的第一个地方是？",[["深山小院，云雾作伴","hx"],["热闹的老街区，烟火气十足","sun"],["海边小镇，潮汐为邻","lr"],["有人安排就好，住哪都行","f2"]]],
+["它的人间职业会是？",[["深山民宿老板","hx"],["旅行博主，边玩边赚","lr"],["自由插画师，灵感型选手","art"],["继承了家业，躺着收租","f2"]]],
+["它的人间通勤方式是？",[["步行，顺便观察人间","lr"],["不出门，居家办公","hx"],["专车接送，讲究","f2"],["骑行上班，自律又环保","jw"]]],
+["它的人间衣柜主打色是？",[["大地色，低调","hx"],["亮色系，能量拉满","sun"],["黑白灰，永不出错","wk"],["复古印花，独一无二","art"]]],
+["它的人间兴趣爱好是？",[["钓鱼，能钓一下午","hx"],["滑雪、潜水、徒步，全想试","lr"],["陶艺，享受手作的温度","art"],["收藏艺术品，眼光老到","f2"]]],
+["它的人间手机屏保是？",[["纯色，高级","wk"],["家人合影","warm"],["自己拍的晚霞","art"],["一张世界地图","lr"]]],
+["它的人间社交签名是？",[["「勿扰。」","hx"],["「今天也要开心呀！」","sun"],["「在路上。」","lr"],["「慢一点，比较快。」","art"]]],
+["它的人间消费观是？",[["该花花该省省，理性","wk"],["只买对的，也买贵的","f2"],["为热爱付费，眼都不眨","art"],["极简主义，物欲很低","hx"]]],
+["它的人间周末安排是？",[["睡到自然醒，早饭吃成早午餐","f2"],["去山里徒步","lr"],["泡美术馆，看展","art"],["整理、健身、复盘，充实","jw"]]],
+["它的人间座右铭是？",[["「躺，是一种态度。」","f2"],["「世界那么大，都想去看看。」","lr"],["「热爱可抵岁月漫长。」","art"],["「静水流深。」","hx"]]],
+["凌晨三点，它在干嘛？",[["跑酷，夜生活刚开始","lr"],["睡得香甜","f2"],["守在窗边，像在等一场月光","hx"],["准时醒来巡一圈，风雨无阻","wk"]]],
+["深夜你还没睡，它会？",[["一直陪着，直到你关灯","warm"],["先睡了，晚安","f2"],["在旁边折腾，暗示你陪玩","lr"],["安静待着，各忙各的","hx"]]],
+["它对窗外夜色的兴趣是？",[["看着楼下的光影，像个夜色观察员","wk"],["看两眼，继续睡","hx"],["对着夜空轻声哼，像唱小夜曲","art"],["要求开窗，吹吹晚风","lr"]]],
+["月圆之夜（脑补），它会？",[["对着月亮轻嚎，神秘感拉满","hx"],["照常作息，不信邪","wk"],["多玩两小时，节日氛围","sun"],["睡得更沉，梦里都是月亮","f2"]]],
+["深夜厨房传来响动，多半是它在？",[["夜访粮仓，安排得妥妥当当","jw"],["翻找零食，理直气壮","f2"],["纯属路过，制造了声响","lr"],["在黑暗里发呆，被你撞见","art"]]],
+["它的深夜食堂首选是？",[["夜宵加餐，人生得意","f2"],["晚间断食，白水一杯","wk"],["存货自主取用，自给自足","jw"],["换着花样来点小惊喜","sun"]]],
+["假设它会失眠，它在想什么？",[["明天的干饭安排","jw"],["白天没扑到的那个影子","lr"],["月亮为什么是圆的","art"],["什么也不想，很快睡着","f2"]]],
+["它熬夜后的状态是？",[["毫无影响，电量异常","f2"],["补觉两小时，元气回归","sun"],["眼神放空，艺术家式的疲惫","art"],["早睡早起，从不熬夜","jw"]]],
+["清晨第一缕阳光照进来，它会？",[["追着光斑玩","sun"],["继续睡，光与我无关","f2"],["开始晨间巡一圈","wk"],["看一眼太阳，眯起眼睛，很美","art"]]],
+["它的夜生活浓度是？",[["夜猫子本猫，越夜越野","lr"],["规律作息，十点即睡","jw"],["看心情，弹性很大","f2"],["睡前一段冥想式发呆","art"]]],
+["它最拿手的绝活是？",[["指令一次学会，学得又快又好","jw"],["原地转圈求关注","sun"],["开门开抽屉，技能点歪但实用","lr"],["优雅地卧成一团，姿势即绝活","art"]]],
+["它的记忆力如何？",[["藏的零食一个月后还能找到","jw"],["谁对它好，记得清清楚楚","warm"],["只记住饭点和几件小烦恼","wk"],["金鱼记忆，转身就忘","f2"]]],
+["它的学习速度是？",[["一遍就会，还能举一反三","jw"],["会，但看心情执行","art"],["学会后到处显摆","sun"],["学会了也装不会，深藏不露","hx"]]],
+["它的隐藏技能是？",[["听到零食袋的声音，秒现","sun"],["装睡，其实都听着","hx"],["精准踩点叫早，误差不超五分钟","wk"],["用眼神悄悄使唤人类","f2"]]],
+["它的运动细胞是？",[["运动健将，无所不能","lr"],["间歇性运动，持续性躺平","f2"],["体态优雅，柔韧惊人","art"],["日常散步足矣，养生派","wk"]]],
+["它的「语言」表达能力是？",[["叫声丰富，堪称十级学者","sun"],["沉默是金，关键时一鸣惊人","hx"],["不同叫声表达不同需求","wk"],["呼噜与哼唧，自成流派","art"]]],
+["它的特长写进简历是？",[["「适应力强，随遇而安」","f2"],["「执行力强，目标导向」","jw"],["「共情力强，团队粘合剂」","warm"],["「审美在线，创意无限」","art"]]],
+["最让你惊讶的一次表现是？",[["自己解决了难题，聪明得让人惊喜","jw"],["在你难过时恰好贴了过来","warm"],["完成了一次高难度跳跃","lr"],["忽然摆出极有镜头感的姿势","art"]]],
+["它的平衡感是？",[["如履平地，天生的平衡大师","hx"],["偶尔失足，但立刻装没事","f2"],["会反复练习，越走越稳","jw"],["拒绝高难度动作，安全第一","wk"]]],
+["它最可能考的一门证书是？",[["游泳教练证","lr"],["高级品鉴师","f2"],["心理咨询师，倾听型选手","warm"],["艺术策展人","art"]]],
+["如果它继承一笔遗产（脑补），第一件事是？",[["买下整面墙的罐头","f2"],["找个安静院子，隐居","hx"],["环球旅行","lr"],["照顾更多需要帮助的小动物","warm"]]],
+["它对「值不值」的判断标准是？",[["喜欢就值","art"],["实用就值","wk"],["开心就值","f2"],["能探索新世界就值","lr"]]],
+["它的「工资」（零食预算）会花在？",[["存起来，细水长流","wk"],["全部吃光，今朝有酒","f2"],["一半自己吃，一半分享","sun"],["为热爱的事买单","art"]]],
+["它捡到钱（人间版）的反应是？",[["上交，拾金不昧","warm"],["请大家吃饭，热闹一回","sun"],["存进小金库，未雨绸缪","wk"],["买张车票，说走就走","lr"]]],
+["它的消费习惯是？",[["只买刚需","hx"],["提前做功课，货比三家","wk"],["喜欢就买，不看价签","f2"],["为兴趣氪金，快乐无价","art"]]],
+["如果它开店，定价策略是？",[["良心价，回头客多","warm"],["小贵但值，买的是体验","art"],["明码标价，绝不打折","wk"],["限量发售，慢慢来","f2"]]],
+["它认为最大的财富是？",[["自由","lr"],["安稳的小日子","hx"],["家人和朋友","warm"],["见过世界的眼界","art"]]],
+["它的存钱目标是？",[["买一座山","hx"],["环游世界的机票","lr"],["给家人换个更大的房子","warm"],["心头好的限量款","f2"]]],
+["它对打折促销的态度是？",[["无动于衷，需求决定一切","jw"],["精算满减，比谁都清醒","wk"],["凑热闹，买回来才发现用不上","f2"],["打折也要买最好看的那个","art"]]],
+["它对「财务自由」的定义是？",[["睡到自然醒还有进账","f2"],["想去哪就去哪","lr"],["有一间自己的小屋","hx"],["能一直做热爱的事","art"]]],
+["它交朋友的方式是？",[["慢慢观察，日久见人心","hx"],["主动分享零食和玩具","sun"],["陪着就行，不用多话","warm"],["因为一场游戏打成一片","lr"]]],
+["玩伴借走了它的玩具，它会？",[["让给对方，下次再玩","warm"],["礼貌地要回来，边界感清晰","wk"],["默默再藏一个备用","hx"],["直接凑过去一起玩，先玩再说","jw"]]],
+["它的朋友圈层是？",[["三两知己，胜过万千点头之交","hx"],["五湖四海，处处熟人","sun"],["亦师亦友，互相学习","jw"],["玩伴而已，聚散随缘","lr"]]],
+["它安慰朋友的方式是？",[["默默陪在身边","warm"],["带对方去玩，转移注意","sun"],["理性分析，指出问题","wk"],["分享自己最宝贝的东西，最高礼遇","hx"]]],
+["它和朋友的日常是？",[["各睡各的，偶尔碰头","hx"],["形影不离，贴贴","warm"],["互相监督，一起进步","jw"],["一起冒险，探索地图","lr"]]],
+["它被朋友冷落时？",[["主动凑上去，热脸相迎","sun"],["自娱自乐，不卑不亢","hx"],["直接去找新朋友","lr"],["安静一会儿，等对方发现","art"]]],
+["它眼里最好的关系是？",[["各自安好，互相惦记","hx"],["有福同享，有难同当","warm"],["共同进步，彼此成就","jw"],["一起看过的风景","art"]]],
+["朋友搬家走了，它会？",[["失落好几天","warm"],["很快交到新朋友","sun"],["相信友谊不受距离限制","wk"],["把回忆整理好，放进心里","art"]]],
+["它对「团建」的态度是？",[["能躲就躲","hx"],["全员中最活跃","sun"],["配合出席，遵守流程","wk"],["全程记录，负责产出美图","art"]]],
+["它择友最重要的标准是？",[["相处舒服，不用表演","hx"],["有趣，能玩到一起","lr"],["真诚，情绪稳定","warm"],["优秀，能带自己进步","jw"]]],
+["它的手机里第一批软件是？",[["外卖软件，收藏了附近餐馆","f2"],["地图，标记想去的地方","lr"],["修图软件，出片必备","art"],["闹钟加日程表，自律人生","jw"]]],
+["它相册里最多的是？",[["自拍","sun"],["天空和云","art"],["食物照片","f2"],["主人打哈欠的照片，已备份","wk"]]],
+["它的电量常年是？",[["百分之五十，随用随充","f2"],["百分之一，但总能撑住","lr"],["满格，规律充电","jw"],["从不看电量，凭感觉","hx"]]],
+["它的屏幕使用时间报告会显示？",[["短视频，刷到停不下来","f2"],["导航类，世界那么大","lr"],["备忘录，记满了计划","jw"],["备忘录里全是小诗","art"]]],
+["它的手机壳是？",[["纯色简约","hx"],["最新联名款","f2"],["自己手绘定制","art"],["耐摔就行，实用主义","wk"]]],
+["它会置顶谁？",[["铲屎官（备注：后勤部长）","warm"],["自己（自恋营业中）","sun"],["置顶是什么？全员免打扰","hx"],["重要的合作伙伴们","wk"]]],
+["它发朋友圈的频率是？",[["日更，生活记录家","sun"],["一年几条，条条精品","art"],["从不发，只看","hx"],["想到就发，随性","lr"]]],
+["它收到红包后的操作是？",[["秒收，配上谢谢表情包","sun"],["先存起来","wk"],["立刻清空购物车","f2"],["请朋友喝下午茶","warm"]]],
+["它的聊天风格是？",[["长语音，热情澎湃","sun"],["「嗯。」","hx"],["表情包大战","f2"],["字斟句酌，标点齐全","wk"]]],
+["它手机里存的一张特别照片是？",[["余额截图，看看就好","wk"],["收藏的美食清单","f2"],["某次旅行的车票","lr"],["一朵花的照片，那天心情很好","art"]]],
+["它的年度关键词是？",[["松弛","f2"],["在路上","lr"],["独处","hx"],["热爱","art"]]],
+["它的年度高光时刻是？",[["解锁了新领地——你的床","f2"],["完成了一次完美的户外探险","lr"],["作品（爪印）被夸了","art"],["陪家里度过了难关，被称英雄","warm"]]],
+["它的年度遗憾是？",[["没睡够一千小时","f2"],["没去看海","lr"],["还没学会接受陌生人的善意","hx"],["减肥计划屡战屡败","jw"]]],
+["它的年度账单大头是？",[["伙食费","f2"],["装备投资，为效率买单","jw"],["旅行基金","lr"],["审美升级，换了好几套风格","art"]]],
+["它的年度成长是？",[["学会了情绪稳定","wk"],["学会了更好地爱人","warm"],["探索半径扩大了一倍","lr"],["找到了自己的风格","art"]]],
+["新年立flag（假如它会立）？",[["立了就倒，不如立着玩","f2"],["每月一个小目标，循序渐进","jw"],["家人健康，世界和平","warm"],["去三个没去过的地方","lr"]]],
+["它的年度照片是哪张？",[["瘫在沙发上的经典款","f2"],["山顶回头的那张","lr"],["逆光侧脸，氛围感满分","art"],["和家人合照，笑得最开","sun"]]],
+["它想对家人说的一句话是？",[["「感谢投喂，来年继续。」","f2"],["「下一年，去更远的地方。」","lr"],["「有你们在，很好。」","warm"],["「我把日常都写成了诗。」","art"]]],
+["它的年度人设总结是？",[["人间清醒，稳中带皮","wk"],["探索型选手，永远好奇","lr"],["温柔本体，治愈担当","warm"],["低调神秘，内心丰盈","hx"]]],
+["它对下一年的期待是？",[["维持现状，现状很好","hx"],["新的地图，新的冒险","lr"],["更热烈地生活","sun"],["把日子过成想要的样子","art"]]],
+["它的年度运动量报告是？",[["探索欲爆棚，日均两万步","lr"],["日常散步，稳定输出","jw"],["静态为主，偶有爆发","f2"],["瑜伽式伸展，柔韧满分","art"]]],
+["它的年度社交支出是？",[["结交了小区一半的朋友","sun"],["深化了两段珍贵友谊","warm"],["维持了必要的礼貌往来","wk"],["享受独处，零社交内耗","hx"]]],
+["它的年度感悟是？",[["生活嘛，最重要的是开心","f2"],["慢慢来，比较快","art"],["远方不远，就在脚下","lr"],["内心安静，万事从容","hx"]]],
+["如果给它的这一年打分？",[["95分，扣5分是怕它骄傲","sun"],["90分，还有进步空间","jw"],["88分，剩12分留给意外和惊喜","art"],["100分，无可挑剔","wk"]]],
+["新的一年，它想解锁的成就是？",[["探索城市新地图","lr"],["解锁一项新才艺","art"],["吃遍全城的美食","f2"],["成为更好的自己","jw"]]],
+["你拆开一包小零食，它的第一反应是？",[["循着声音小跑过来","sun"],["耳朵一动，继续躺","f2"],["先确认来源，再决定","wk"],["慢慢悠悠，闻香而至","art"]]],
+["窗外传来鸟叫，它会？",[["竖起耳朵，认真听","hx"],["跟着轻轻哼两声","art"],["立刻跑去窗边看","lr"],["看一眼，继续睡","f2"]]],
+["家里换了新香氛，它会？",[["绕着闻一圈，做足功课","wk"],["找个舒服位置继续躺","f2"],["凑近嗅嗅，像在品鉴","art"],["有点好奇，到处看看","sun"]]],
+["你轻轻哼歌时，它会？",[["安静趴着听，像小听众","warm"],["跟着叫两声，加入合唱","sun"],["毫无反应，沉浸自己的世界","hx"],["歪头看你，像在打分","art"]]],
+["雨点敲窗的声音，它会？",[["贴着你，一起听雨","warm"],["睡得更香了","f2"],["走到窗边看雨","lr"],["眯眼发呆，很有诗意","art"]]],
+["厨房传来碗筷声，它会？",[["准时出现，从不迟到","jw"],["慢半拍，但一定会到","f2"],["先观察，再决定要不要去","wk"],["一路小跑，热情捧场","sun"]]],
+["陌生的气味飘进屋，它会？",[["仔细分辨，像个小观察员","wk"],["不太在意，随它去","f2"],["循着味道去探索","lr"],["轻轻嗅嗅，若有所思","art"]]],
+["你叫它名字的声音变轻，它会？",[["依然秒回","sun"],["只动动耳朵","f2"],["静静看你，等你再说一遍","hx"],["慢慢走过来，很给面子","warm"]]],
+["安静的午后，它更喜欢？",[["一点白噪音，睡得更稳","f2"],["窗外的自然声","hx"],["有点轻音乐，氛围刚好","art"],["有点热闹的人声","sun"]]],
+["它对声音的反应像？",[["一台调好频的收音机","wk"],["随缘接收的旧唱片","f2"],["能听出层次的音乐人","art"],["一响就亮的小门铃","sun"]]],
+["春天第一缕暖风，它会？",[["去窗边迎接","lr"],["找个光斑躺下","f2"],["看花看叶，若有所思","art"],["照常睡觉，四季如常","hx"]]],
+["夏日午后，它最爱的降温方式是？",[["贴着瓷砖，自有妙招","f2"],["守在风扇旁，认真研究","wk"],["趴在窗边看云","lr"],["摊成一张薄饼，很优雅","art"]]],
+["秋天落叶飘过窗前，它会？",[["盯着看很久，像在赏景","art"],["扑过去玩一下","sun"],["无动于衷","hx"],["跟着叶子跑出门","lr"]]],
+["降温的第一天，它会？",[["自动找到最暖的角落","jw"],["卷成一团，顺势补觉","f2"],["贴着你，共享温度","warm"],["照样看看窗台，风雨无阻","wk"]]],
+["下雨天不便出门，它会？",[["睡一场好觉","f2"],["趴窗边看雨，很写意","art"],["在家开发新玩法","lr"],["陪你待着，哪里都不去","warm"]]],
+["下雪或起雾（脑补）时，它会？",[["静静看，像在思考人生","hx"],["第一个跑去留下小脚印","lr"],["拍下来，构图很重要","art"],["窝在毯子里，暖意优先","f2"]]],
+["起风的傍晚，它会？",[["耳朵一动，听风","hx"],["想去外面走走","lr"],["追着吹动的帘子玩","sun"],["把毯子挪到避风处","jw"]]],
+["天气变化，它的作息？",[["几乎不受影响，很稳","wk"],["跟着天气变，随性","f2"],["晴天才精神，雨天适合发呆","art"],["照旧，规律得让人佩服","jw"]]],
+["四季里它最像哪一季？",[["春，热闹又明亮","sun"],["夏，热烈而自由","lr"],["秋，安静有层次","art"],["冬，慢悠悠地暖","f2"]]],
+["晴天的好光线，它会？",[["用来睡一个好觉","f2"],["用来看远处的风景","lr"],["用来拍一张好看的照片","art"],["用来把家里巡一圈","wk"]]],
+["如果它去上学，最可能坐在？",[["靠窗的座位，方便看云","art"],["第一排，认真听讲","jw"],["中间，和谁都能聊","sun"],["角落，安静自在","hx"]]],
+["它的课本边角会是？",[["画满小插画","art"],["工整的笔记","jw"],["干干净净","wk"],["贴满贴纸，色彩缤纷","sun"]]],
+["课间十分钟，它会？",[["去操场跑一圈","lr"],["趴桌补觉","f2"],["找朋友聊天","sun"],["望窗外放空","hx"]]],
+["它的作业习惯是？",[["先规划，再动笔","jw"],["灵感来了才写","art"],["边玩边写，但按时交","f2"],["早早写完，然后去看书","wk"]]],
+["小组作业时，它的角色是？",[["统筹进度，安排妥当","jw"],["负责创意和美化","art"],["负责活跃气氛","sun"],["默默把细节补齐","warm"]]],
+["考试前一周，它会？",[["列好复习表，按天推进","jw"],["照常生活，心态松弛","f2"],["最后几天加把劲，但总能过","wk"],["找同学一起复习，热闹","sun"]]],
+["放学路上，它会？",[["绕一条没走过的小路","lr"],["直奔回家，路线固定","jw"],["边走边看店里的新摆设","art"],["和同学慢慢逛","sun"]]],
+["它的书包里一定会有？",[["一本随手画的小本","art"],["计划本和计时器","jw"],["小零食，用来分享","warm"],["一本没看完的闲书","hx"]]],
+["校运会，它报的项目是？",[["接力，越热闹越好","sun"],["长跑，稳稳完成","jw"],["开幕式表演，造型要美","art"],["当后勤，递水递毛巾","warm"]]],
+["毕业纪念册上，它会写？",[["「常联系，一起看世界！」","lr"],["「愿你所愿皆成。」","warm"],["「到此一游，后会有期。」","hx"],["「把日子过成喜欢的样子。」","art"]]],
+["它的早晨第一件事是？",[["按点醒来，顺序固定","jw"],["伸个长长的懒腰，慢慢开始","f2"],["先看一会儿晨光","art"],["精神饱满地来打招呼","sun"]]],
+["它喝水前会？",[["确认水位，很讲究","wk"],["慢慢走近，不急","f2"],["找个好看的光影位置","art"],["顺路小跑过去","sun"]]],
+["你给它换新窝，它会？",[["先用三天观察，再决定","wk"],["当场睡下，毫不客气","f2"],["闻一圈，找个最佳角度","art"],["兴奋地进去转两圈","sun"]]],
+["它的「晚安流程」是？",[["固定时间，固定地点","jw"],["睡前把家里巡一圈","wk"],["在窗边发一会儿呆","art"],["贴着你，等你先睡","warm"]]],
+["家里来了一束新花，它会？",[["凑近闻闻，像在品鉴","art"],["绕着走，保持礼貌","hx"],["看两眼，继续躺","f2"],["围着花转，很好奇","sun"]]],
+["周末的仪式感，它认为是？",[["一次不赶时间的散步","lr"],["一顿慢慢吃的早午餐","f2"],["一段没人打扰的发呆","art"],["和大家热热闹闹待着","sun"]]],
+["拍照时，它会？",[["自动找到最好看的角度","art"],["端正坐好，配合度满分","jw"],["凑过来一起入镜","warm"],["自顾自走开，不爱入镜","hx"]]],
+["节日里家里多了装饰，它会？",[["逐一看看，认真研究","wk"],["找最舒服的位置继续躺","f2"],["在装饰旁摆个造型","art"],["绕着跑两圈，很开心","sun"]]],
+["它最讲究的小细节是？",[["饭碗的位置，一步都不能差","wk"],["午睡的光线和温度","f2"],["窝里的毯子要铺得好看","art"],["全家的作息都记得","jw"]]],
+["它给日常打的分是？",[["「刚刚好，不用改。」","hx"],["「再多点小惊喜更好。」","lr"],["「满分，因为有大家。」","warm"],["「细节还能再打磨。」","jw"]]],
+["它望着窗外发呆时，你猜它在想？",[["「今天的光真好看。」","art"],["「外面有什么新东西？」","lr"],["「什么也不想，很舒服。」","hx"],["「等会儿吃什么？」","f2"]]],
+["它眼里最重要的事是？",[["自在，按自己的节奏","hx"],["新鲜，每天都有新发现","lr"],["喜欢，把热爱放在第一位","art"],["陪伴，和在意的人在一起","warm"]]],
+["如果有「完美的一天」，会是？",[["睡到自然醒，阳光刚好","f2"],["去一个没去过的地方","lr"],["完成一件小小作品","art"],["和喜欢的人待一整天","warm"]]],
+["它面对变化时，通常？",[["先观察，再慢慢靠近","wk"],["顺其自然，很快就适应","f2"],["当成新素材，挺有趣","art"],["兴奋，终于有新玩法","sun"]]],
+["它给「幸福」下的定义是？",[["没人打扰的安静","hx"],["随时能出发的自由","lr"],["被美的事物包围","art"],["有人惦记，也有惦记的人","warm"]]],
+["它的时间观念更像？",[["一张排得整齐的日程表","jw"],["一条随弯就弯的小河","f2"],["一本慢慢翻的画册","art"],["一串清脆的风铃","sun"]]],
+["它和世界相处的方式是？",[["保持一点距离，各自安好","hx"],["走出去，大方打个招呼","sun"],["细细感受，慢慢体会","art"],["先看清，再决定","wk"]]],
+["如果给它一句评语，最贴切的是？",[["「静水流深。」","hx"],["「步履不停。」","lr"],["「把平凡过成诗。」","art"],["「温暖得刚刚好。」","warm"]]],
+["它留给人的第一印象往往是？",[["有点神秘，想多了解","hx"],["开朗，一见如故","sun"],["有品位，细节讲究","art"],["周到，让人安心","warm"]]],
+["最后一道：你希望它在人间，成为怎样的TA？",[["从容自在，不慌不忙","hx"],["一直在路上，兴致勃勃","lr"],["把热爱活成日常","art"],["被爱包围，也懂得爱人","warm"]]],
+];
+
+/* ---------- 8 种人设 ---------- */
+const TYPES={
+  hx:{
+    name:"山野隐士",
+    slogan:"万物静观皆自得",
+    color:"#7A9E7E",
+    report:"在人间，TA是住在半山腰老宅里、与一壶清茶共度晨昏的隐者。话不多，但每一句都有分量；不合群，却从未失礼。TA的疏离不是冷漠，而是一种「我自盛开」的笃定——世界很吵，TA选择安静地丰盛。",
+    story:"传说TA年轻时也曾在人间熙攘处走过一遭，后来发现：热闹是别人的，安静是自己的。于是搬进山里，白天种菜喂云，夜里数星批阅月光。偶有人上山求教人生，TA只递过一杯茶，说：「急什么，饭要一口一口吃，路要一步一步走。」",
+    tips:[
+      "保留独处时间，但每月主动赴一次约——山也要有人来拜访才不寂寞。",
+      "把「随缘」升级为「随喜」，遇见喜欢的事，不妨大方一点靠近。",
+      "把你的松弛感分享出去：教一教身边人，如何慢下来好好吃饭。"
+    ],
+    quote:"「勿扰，在修仙。」（其实只是睡午觉）",
+    job:"深山民宿主理人 / 制茶师"
+  },
+  lr:{
+    name:"自由旅人",
+    slogan:"山川湖海，都是回家的路",
+    color:"#5E8FA8",
+    report:"在人间，TA是永远在路上的旅人，行李很轻，好奇心很重。别人打卡景点，TA收集风的味道。自由对TA来说不是选择，而是呼吸方式——只要窗外还有没见过的风景，TA就永远年轻。",
+    story:"TA的地图上没有终点，只有「下一站」。朋友说TA活得像一阵风，TA认真地纠正：「风也需要地图。」在某个无名小镇的黄昏，TA会突然停下脚步——不是累了，是舍不得那一秒钟的光。后来TA把这束光寄给了朋友，附言：下次一起来看。",
+    tips:[
+      "把说走就走落地成一年两三次的小旅行，自由也需要计划表护航。",
+      "给自由装上指南针：出发前，记得回头看看重要的人。",
+      "拍下路上的光，建一本自己的「人间图鉴」，那是TA独家的财产。"
+    ],
+    quote:"「下一站在哪？」",
+    job:"旅行专栏作者 / 徒步路线设计师"
+  },
+  art:{
+    name:"慵懒艺术家",
+    slogan:"把日子过成诗，慢一点比较快",
+    color:"#B07BA6",
+    report:"在人间，TA是工作室里睡到自然醒的艺术家，感受力比信号还灵敏。一片落叶、一束斜阳，都能在TA心里泛起三行诗。慵懒不是拖延，是给灵感留白；TA不赶时间，因为美从不迟到。",
+    story:"TA的房间里堆着没画完的画和写了一半的信，但TA从不焦虑——「灵感也需要午睡」。某天TA把窗台扫成一堆柔和的光影，端详片刻，说：这也是作品。从那以后，TA的人生处处是展览，只是观众常常只有一位路过的猫。",
+    tips:[
+      "每周给热爱的事留两小时「心流时间」，关掉提醒，只和自己相处。",
+      "把感受随手写下来，哪怕只有一句——那是灵感的种子库。",
+      "完成比完美重要：先交出第一稿，再慢慢把它改得更像自己。"
+    ],
+    quote:"「别催，灵感在堵车。」",
+    job:"自由插画师 / 独立音乐人"
+  },
+  f2:{
+    name:"慵懒富二代",
+    slogan:"躺，是一种生产力",
+    color:"#E8B04B",
+    report:"在人间，TA是含着「金汤勺」出生的人间富贵花：气质松弛，出手大方，最擅长把普通日子过成度假。TA并非不努力，只是坚信一条真理——会休息的人，才真正会生活。",
+    story:"TA的一天从上午十一点的阳光开始。别人忙忙碌碌，TA卷起袖子——认真挑选今天要打卡的新甜品店。有人向TA讨教成功的秘诀，TA眨眨眼：「先睡饱，再谈理想。」神奇的是，好运似乎总偏爱松弛的人，于是一切显得理所当然。",
+    tips:[
+      "把「躺平」升级为「高质量休息」：睡饱、吃好、晒太阳，一样都不许省。",
+      "定期给自己安排一次真正意义上的犒赏，仪式感是快乐的放大器。",
+      "偶尔接一个有挑战的小项目，让惊喜的人是你自己。"
+    ],
+    quote:"「这个可以有。」",
+    job:"民宿老板 / 生活美学买手"
+  },
+  sun:{
+    name:"人间小太阳",
+    slogan:"你的今日份快乐，已到账",
+    color:"#E58F5A",
+    report:"在人间，TA是行走的多巴胺：走到哪里，哪里的气氛就亮一度。热情但不灼人，快乐且有分寸。TA始终相信，笑容是最好的通行证，而真诚是最短的社交距离。",
+    story:"TA认识楼下便利店的每一位店员，记得每位朋友的口味。有人问TA为什么总是元气满满，TA说：「开心是会传染的，我先打好底。」其实深夜TA也会悄悄emo，但第二天太阳升起，TA又元气满满——因为TA知道，有人在等这束光。",
+    tips:[
+      "热情留给值得的人：学会分辨谁在充电、谁在耗电。",
+      "把「照顾大家」的预算里，也分一份给「照顾自己」。",
+      "每天记录一个小确幸，攒多了，就是TA的精神小金库。"
+    ],
+    quote:"「今天也要开心呀！」",
+    job:"活动策划师 / 少儿老师"
+  },
+  wk:{
+    name:"人间清醒家",
+    slogan:"情绪稳定，是顶级奢侈品",
+    color:"#6E8B7B",
+    report:"在人间，TA是人群中最冷静的观察者：理性在线，逻辑清晰，从不内耗。TA的温柔藏在判断力里——不轻易开口，但一开口，就正好说在你需要的地方。",
+    story:"朋友带着一肚子委屈来找TA，TA没有急着安慰，而是泡了两杯茶，安静听完，然后说：「其实你已经知道答案了，只是需要有人说一句『你做得对』。」TA的书架上有一整排笔记，扉页写着一行小字：慢慢来，比较快。",
+    tips:[
+      "允许自己偶尔「不理性」——情绪也是一种重要的数据。",
+      "把清醒用来托举别人的同时，也留一点给深夜的自己。",
+      "每周留白半小时，什么都不想，大脑也需要关机重启。"
+    ],
+    quote:"「先说结论。」",
+    job:"咨询顾问 / 编辑"
+  },
+  jw:{
+    name:"人间卷王",
+    slogan:"自律给我自由",
+    color:"#8A7BA6",
+    report:"在人间，TA是把日程表过成艺术品的行动派：目标清晰，执行迅猛，连发呆都掐着表。但TA的卷不是焦虑，而是热爱有处安放的笃定——每一分努力，都花在真正在乎的事上。",
+    story:"TA的清晨从六点半开始：跑步、早餐、复盘，一气呵成。朋友笑TA活得像个精密的钟表，TA笑着回敬：「钟表不用午休，我用。」年底整理时TA发现，这一年最好的灵感，其实都来自跑完步后那十分钟的风。",
+    tips:[
+      "把「完成」排在「完美」前面，先交付，再打磨。",
+      "在日程表里留一栏「什么都不做」——那也是正经日程。",
+      "带一带身边想开始却迟迟没开始的人，成就感会翻倍。"
+    ],
+    quote:"「安排上。」",
+    job:"项目经理 / 健身教练"
+  },
+  warm:{
+    name:"人间小棉袄",
+    slogan:"温柔是可再生的能量",
+    color:"#D98B94",
+    report:"在人间，TA是治愈系担当，擅长在细节里安放爱意：记得你怕冷，记得你随口提过的那家店。TA的温柔不是讨好，而是一种发自内心的朴素愿望——「我希望你好」。",
+    story:"TA会在雨天多带一把伞，会在你晚归的夜里留一盏灯。有人问TA会不会累，TA想了想说：「被需要的感觉，像刚晒过太阳的被子。」TA也有小情绪，只是习惯先把自己哄好，再轻手轻脚地回来陪你。",
+    tips:[
+      "学会拒绝：温柔也要有边界，否则会漏水。",
+      "定期给自己「充充电」——TA值得被同样温柔地对待。",
+      "把想说的话说出口，别只把它们缝进细节里。"
+    ],
+    quote:"「需要抱抱吗？」",
+    job:"心理咨询师 / 兽医助理"
+  }
+};
+const TYPE_ORDER=["sun","warm","hx","lr","art","f2","wk","jw"];
+const THEMES=["干饭现场","睡眠研究","玩乐时刻","社交风格","与你之间","情绪底色","领地美学","出门在外","人间幻想","深夜档案","天赋特长","人间账本","友情观","如果TA有手机","年度总结","气味与声音","四季与天气","如果TA上学","生活仪式感","小小哲学"];
+
+/* ---------- 状态 ---------- */
+const S={order:[],answers:[],idx:0,count:10,finished:false,themeIdx:[]};
+const KEY="pet_humanity_v1";
+const $=id=>document.getElementById(id);
+
+/* ---------- 工具 ---------- */
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function save(){
+  try{localStorage.setItem(KEY,JSON.stringify({
+    order:S.order,answers:S.answers,idx:S.idx,count:S.count,
+    finished:S.finished,themeIdx:S.themeIdx
+  }));}catch(e){}
+}
+function load(){
+  try{return JSON.parse(localStorage.getItem(KEY));}catch(e){return null;}
+}
+function clearSave(){try{localStorage.removeItem(KEY);}catch(e){}}
+const SEEN_KEY="pet_humanity_seen_v1";
+function loadSeen(){
+  try{const a=JSON.parse(localStorage.getItem(SEEN_KEY));
+    return Array.isArray(a)?a.filter(i=>Number.isInteger(i)&&i>=0&&i<BANK.length):[];
+  }catch(e){return [];}
+}
+function saveSeen(a){try{localStorage.setItem(SEEN_KEY,JSON.stringify(a.slice(-400)));}catch(e){}}
+function markSeen(order){
+  const set=new Set(loadSeen());order.forEach(i=>set.add(i));saveSeen([...set]);
+}
+/* 分层抽题：先按主题分组，组内优先取没做过的题；
+   再按打乱的主题顺序轮流抽，保证同一次测试主题尽量分散、题目不重复。 */
+function pickQuestions(n){
+  const seen=new Set(loadSeen());
+  const groups=Math.ceil(BANK.length/10);
+  const buckets=[];
+  for(let g=0;g<groups;g++){
+    const ids=[];
+    for(let i=g*10;i<Math.min((g+1)*10,BANK.length);i++)ids.push(i);
+    buckets.push({fresh:shuffle(ids.filter(i=>!seen.has(i))),used:shuffle(ids.filter(i=>seen.has(i)))});
+  }
+  const gs=shuffle([...Array(groups).keys()]);
+  const out=[];
+  for(let round=0;round<10&&out.length<n;round++){
+    for(const g of gs){
+      const b=buckets[g];
+      const q=b.fresh.length?b.fresh.pop():(b.used.length?b.used.pop():null);
+      if(q!==null){out.push(q);if(out.length>=n)break;}
+    }
+  }
+  return shuffle(out);
+}
+let toastTimer=null;
+function toast(msg){
+  const t=$("toast");t.textContent=msg;t.classList.add("show");
+  clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove("show"),2200);
+}
+function show(name){
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  $("screen-"+name).classList.add("active");
+  window.scrollTo({top:0,behavior:"instant"});
+}
+
+/* ---------- 计分（结果完全由答案决定） ---------- */
+function computeResult(){
+  const scores={hx:0,lr:0,art:0,f2:0,sun:0,wk:0,jw:0,warm:0};
+  S.answers.forEach((oi,qi)=>{
+    if(oi<0)return;
+    const t=BANK[S.order[qi]][1][oi][1];
+    scores[t]+=2;
+  });
+  let best="sun",bestV=-1;
+  TYPE_ORDER.forEach(k=>{
+    if(scores[k]>bestV){bestV=scores[k];best=k;}
+  });
+  return {scores,best};
+}
+function computeBars(scores){
+  const n=Math.max(1,S.count*2);
+  const raw={
+    "活力值":scores.lr*2+scores.sun*1.6+scores.jw*1.2,
+    "黏人度":scores.warm*2+scores.sun*0.8+scores.f2*0.4,
+    "自律度":scores.jw*2+scores.wk*1.8+scores.hx*0.6,
+    "艺术感":scores.art*2+scores.hx*1.0+scores.lr*0.4
+  };
+  const out={};
+  for(const k in raw){out[k]=Math.min(100,Math.round(raw[k]/n*100));}
+  return out;
+}
+
+/* ---------- 主题场景插画 · 原创通用示意（原创 SVG） ---------- */
+function petSVG(type){
+  const c=TYPES[type].color;
+  const isDog=["lr","sun","jw"].includes(type);
+  const hair={hx:"#5A5148",lr:"#6B7F8C",art:"#7A5C74",f2:"#9A7540",sun:"#C77A3E",wk:"#4F6055",jw:"#5B5270",warm:"#A96A6F"}[type];
+  const shirt={hx:"#A8BBA0",lr:"#8FB2C4",art:"#C6A3C1",f2:"#EFD49A",sun:"#F3B572",wk:"#A6BCA9",jw:"#B3A9CE",warm:"#E9B3B7"}[type];
+  /* 八种场景：远景、道具、氛围，均为原创矢量绘制 */
+  const scenes={
+    hx:`<path d="M6 176 q46 -56 92 -18 q38 -48 82 -10 q48 -50 134 14 v90 H6 z" fill="#BFD2B4" opacity=".75"/>
+        <path d="M6 196 q52 -34 104 -8 q46 -28 96 6 q52 -26 108 14 v54 H6 z" fill="#A9C1A0" opacity=".7"/>
+        <g fill="#FFF9EE" opacity=".75"><ellipse cx="72" cy="58" rx="26" ry="8"/><ellipse cx="88" cy="54" rx="16" ry="7"/><ellipse cx="236" cy="44" rx="22" ry="7"/></g>
+        <g transform="translate(272,118)"><rect x="-2" y="16" width="4" height="34" rx="2" fill="#8FA784"/><circle cx="0" cy="10" r="16" fill="#8FA784"/><circle cx="-10" cy="17" r="10" fill="#A2B996"/><circle cx="10" cy="17" r="9" fill="#B7C9A9"/></g>
+        <g transform="translate(30,168)"><rect x="0" y="0" width="40" height="6" rx="3" fill="#C9A86B"/><rect x="6" y="6" width="3" height="20" fill="#B08F5C"/><rect x="31" y="6" width="3" height="20" fill="#B08F5C"/>
+        <path d="M10 -2 q4 -12 12 -12 q8 0 12 12 z" fill="#E6D6B8"/><path d="M32 -6 q8 -2 6 6" fill="none" stroke="#E6D6B8" stroke-width="3"/><rect x="14" y="-16" width="8" height="4" rx="2" fill="#C9A86B"/></g>`,
+    lr:`<circle cx="256" cy="56" r="30" fill="#F6D58F" opacity=".8"/><circle cx="256" cy="56" r="21" fill="#F2C46B"/>
+        <path d="M6 182 q54 -46 106 -12 q46 -40 92 -4 q54 -34 110 12 v64 H6 z" fill="#B9D2C6" opacity=".75"/>
+        <path d="M6 204 q60 -26 116 -4 q56 -24 106 6 q42 -18 86 8 v42 H6 z" fill="#A6C4B7" opacity=".7"/>
+        <g transform="translate(42,120)"><rect x="-2" y="22" width="5" height="60" rx="2" fill="#B08F5C"/><path d="M2 24 l38 -10 -38 -10 z" fill="#E58F5A"/><path d="M2 46 l30 -8 -30 -8 z" fill="#E8B04B"/></g>
+        <g transform="translate(268,168)"><rect x="0" y="0" width="34" height="24" rx="4" fill="#FFF6E3" stroke="#D8B88A" stroke-width="2"/><path d="M4 18 q8 -12 14 -6 q8 -8 12 6" fill="none" stroke="#B9A07A" stroke-width="2"/></g>`,
+    art:`<rect x="26" y="26" width="126" height="112" rx="10" fill="#F3E3D6" stroke="#D8BFA9" stroke-width="4"/>
+        <rect x="34" y="34" width="110" height="96" rx="6" fill="#EFE0D2"/><circle cx="112" cy="58" r="13" fill="#F6D58F" opacity=".85"/>
+        <path d="M34 112 q26 -30 52 -10 q26 -22 58 4 v24 H34 z" fill="#CDBBA6" opacity=".8"/>
+        <line x1="89" y1="34" x2="89" y2="130" stroke="#D8BFA9" stroke-width="4"/>
+        <g transform="translate(232,108)"><line x1="0" y1="0" x2="-14" y2="80" stroke="#B08F5C" stroke-width="5"/><line x1="0" y1="0" x2="16" y2="80" stroke="#B08F5C" stroke-width="5"/>
+        <rect x="-20" y="4" width="40" height="52" rx="3" fill="#FFF6E3" stroke="#C9A86B" stroke-width="2"/><path d="M-14 44 q14 -22 28 0" fill="none" stroke="#B07BA6" stroke-width="3"/><circle cx="6" cy="22" r="5" fill="#E8B04B"/></g>
+        <g transform="translate(190,182)"><circle cx="0" cy="0" r="15" fill="#FFF6E3" stroke="#C9A86B" stroke-width="2"/><circle cx="-7" cy="-3" r="3" fill="#D97757"/><circle cx="4" cy="-6" r="3" fill="#7A9E7E"/><circle cx="8" cy="4" r="3" fill="#B07BA6"/></g>`,
+    f2:`<path d="M26 118 q0 -18 20 -18 h120 q20 0 20 18 v62 q0 16 -20 16 H46 q-20 0 -20 -16 z" fill="#EFD9B4" opacity=".9"/>
+        <path d="M40 120 q0 -12 14 -12 h104 q14 0 14 12 v36 H40 z" fill="#F8E7C9"/>
+        <rect x="52" y="132" width="34" height="26" rx="8" fill="#E8C79A"/><rect x="126" y="132" width="34" height="26" rx="8" fill="#E8C79A"/>
+        <g transform="translate(252,42)"><path d="M0 0 L0 70" stroke="#B08F5C" stroke-width="4"/><path d="M-34 0 q34 -30 68 0 z" fill="#E8B04B" opacity=".85"/></g>
+        <g transform="translate(228,160)"><rect x="0" y="0" width="22" height="30" rx="4" fill="#FFF6E3" stroke="#D8B88A" stroke-width="2"/><path d="M4 8 h14" stroke="#E58F5A" stroke-width="3"/><line x1="18" y1="2" x2="26" y2="-8" stroke="#B08F5C" stroke-width="3"/></g>`,
+    sun:`<circle cx="252" cy="58" r="34" fill="#F8D789" opacity=".55"/><circle cx="252" cy="58" r="23" fill="#F2C46B"/>
+        <g stroke="#E8B04B" stroke-width="4" stroke-linecap="round" opacity=".8">${[0,45,90,135,180,225,270,315].map(a=>`<line x1="252" y1="24" x2="252" y2="14" transform="rotate(${a} 252 58)"/>`).join("")}</g>
+        <path d="M6 190 q56 -30 112 -6 q54 -28 106 4 q48 -20 90 10 v58 H6 z" fill="#F4D9A8" opacity=".6"/>
+        <g transform="translate(46,150)"><line x1="0" y1="0" x2="0" y2="42" stroke="#8FAE82" stroke-width="3"/><circle cx="0" cy="-6" r="8" fill="#E9A0A0"/><circle cx="-9" cy="-2" r="6" fill="#F3B9B9"/><circle cx="9" cy="-2" r="6" fill="#F3B9B9"/><circle cx="0" cy="4" r="5" fill="#F6D58F"/></g>
+        <g transform="translate(284,140)"><line x1="0" y1="0" x2="0" y2="52" stroke="#8FAE82" stroke-width="3"/><circle cx="0" cy="-6" r="8" fill="#B07BA6"/><circle cx="-9" cy="-2" r="6" fill="#C6A3C1"/><circle cx="9" cy="-2" r="6" fill="#C6A3C1"/><circle cx="0" cy="4" r="5" fill="#F6D58F"/></g>
+        <path d="M20 40 q14 -8 28 0 M200 30 q14 -8 28 0" fill="none" stroke="#E58F5A" stroke-width="3" stroke-linecap="round"/>`,
+    wk:`<rect x="24" y="34" width="118" height="146" rx="8" fill="#E7E0CE" stroke="#CFC3A8" stroke-width="3"/>
+        <rect x="30" y="86" width="106" height="5" fill="#CFC3A8"/><rect x="30" y="136" width="106" height="5" fill="#CFC3A8"/>
+        <g fill="#A8BBA0"><rect x="38" y="52" width="12" height="30" rx="2"/><rect x="54" y="46" width="10" height="36" rx="2"/></g>
+        <g fill="#D9A29A"><rect x="70" y="56" width="11" height="26" rx="2"/><rect x="85" y="50" width="12" height="32" rx="2"/></g>
+        <g fill="#E8C79A"><rect x="38" y="100" width="12" height="32" rx="2"/><rect x="54" y="106" width="10" height="26" rx="2"/></g>
+        <g transform="translate(250,124)"><path d="M-16 0 L16 0 L10 24 L-10 24 z" fill="#F3D9B8" opacity=".9"/><rect x="-3" y="24" width="6" height="30" fill="#B9A07A"/><ellipse cx="0" cy="56" rx="20" ry="5" fill="#C9B79A"/></g>
+        <g transform="translate(272,172)"><rect x="0" y="0" width="24" height="20" rx="3" fill="#FFF6E3" stroke="#C9A86B" stroke-width="2"/><path d="M24 6 q10 2 8 10 q-2 4 -8 2" fill="none" stroke="#C9A86B" stroke-width="2"/></g>`,
+    jw:`<rect x="26" y="34" width="126" height="106" rx="8" fill="#FFF6E3" stroke="#CFC0D8" stroke-width="3"/>
+        <g stroke="#D9CDE4" stroke-width="2">${[0,1,2,3].map(r=>`<line x1="32" y1="${58+r*22}" x2="146" y2="${58+r*22}"/>`).join("")}${ [0,1,2,3,4].map(k=>`<line x1="${32+k*28}" y1="46" x2="${32+k*28}" y2="132"/>`).join("")}</g>
+        <g fill="#B3A9CE"><circle cx="46" cy="52" r="4"/><circle cx="74" cy="74" r="4"/><circle cx="102" cy="96" r="4"/><circle cx="130" cy="118" r="4"/></g>
+        <circle cx="262" cy="66" r="24" fill="#FFF6E3" stroke="#B3A9CE" stroke-width="4"/>
+        <line x1="262" y1="66" x2="262" y2="52" stroke="#8A7BA6" stroke-width="3.5" stroke-linecap="round"/><line x1="262" y1="66" x2="273" y2="72" stroke="#8A7BA6" stroke-width="3.5" stroke-linecap="round"/>
+        <g transform="translate(244,158)"><rect x="0" y="0" width="38" height="28" rx="4" fill="#FFF6E3" stroke="#B3A9CE" stroke-width="2"/><path d="M6 10 h26 M6 17 h20" stroke="#B3A9CE" stroke-width="2"/></g>
+        <g transform="translate(44,168)"><rect x="-3" y="8" width="6" height="26" fill="#8FAE82"/><circle cx="0" cy="2" r="12" fill="#A8BBA0"/><circle cx="-8" cy="10" r="8" fill="#B7C9A9"/></g>`,
+    warm:`<path d="M6 196 q76 -20 154 -4 q76 -16 154 8 v56 H6 z" fill="#F1D6D2" opacity=".65"/>
+        <g transform="translate(46,154)"><circle cx="0" cy="0" r="18" fill="#E9B3B7"/><path d="M-12 -8 q12 8 22 2 M-10 6 q12 8 20 0 M0 -16 q6 10 2 18" fill="none" stroke="#D18F96" stroke-width="2"/></g>
+        <g transform="translate(272,120)"><path d="M-14 0 L14 0 L9 28 L-9 28 z" fill="#F3D9B8" opacity=".9"/><rect x="-3" y="28" width="6" height="34" fill="#C9A86B"/><ellipse cx="0" cy="64" rx="20" ry="5" fill="#E0CBA8"/><circle cx="0" cy="14" r="10" fill="#F8E7B8" opacity=".8"/></g>
+        <rect x="150" y="176" width="46" height="26" rx="10" fill="#F6DEDA" stroke="#E6BFC0" stroke-width="2"/>
+        <g fill="#D98B94" opacity=".8"><path d="M224 48 q-6 -10 -14 -3 q-6 6 3 14 l11 9 11 -9 q9 -8 3 -14 q-8 -7 -14 3 z"/><path d="M84 52 q-4 -7 -10 -2 q-4 4 2 10 l8 6 8 -6 q6 -6 2 -10 q-6 -5 -10 2 z" opacity=".7"/></g>`
+  }[type];
+
+  /* 宠物配饰 */
+  const acc={
+    hx:`<path d="M82 112 L120 84 L158 112 Z" fill="#C9A86B"/><path d="M82 112 L120 84 L158 112" fill="none" stroke="#A8854E" stroke-width="3" stroke-linejoin="round"/><path d="M98 110 h44" stroke="#A8854E" stroke-width="2.5" stroke-linecap="round"/>`,
+    lr:`<line x1="154" y1="128" x2="154" y2="92" stroke="#8A6C3C" stroke-width="3.5" stroke-linecap="round"/><path d="M154 92 l20 6 -20 6 z" fill="#E58F5A"/><rect x="86" y="176" width="24" height="24" rx="7" fill="#5E8FA8"/><path d="M90 176 v-6 a8 8 0 0 1 16 0 v6" fill="none" stroke="#436E85" stroke-width="3.5"/>`,
+    art:`<ellipse cx="120" cy="106" rx="38" ry="13" fill="#B07BA6" transform="rotate(-12 120 106)"/><circle cx="146" cy="98" r="6" fill="#8E5E86"/><g transform="rotate(28 168 168)"><rect x="164" y="140" width="6" height="40" rx="3" fill="#A8854E"/><path d="M164 140 h6 l-3 -11 z" fill="#D97757"/></g>`,
+    f2:`<rect x="94" y="134" width="24" height="12" rx="6" fill="#3D3833"/><rect x="122" y="134" width="24" height="12" rx="6" fill="#3D3833"/><line x1="118" y1="140" x2="122" y2="140" stroke="#3D3833" stroke-width="3"/><path d="M108 168 l12 8 12 -8 -4 12 -8 5 -8 -5 z" fill="#D97757"/>`,
+    sun:`<g stroke="#E8B04B" stroke-width="4" stroke-linecap="round">${[0,60,120,180,240,300].map(a=>`<line x1="120" y1="98" x2="120" y2="88" transform="rotate(${a} 120 140)"/>`).join("")}</g>`,
+    wk:`<circle cx="107" cy="141" r="11" fill="none" stroke="#3D3833" stroke-width="3"/><circle cx="133" cy="141" r="11" fill="none" stroke="#3D3833" stroke-width="3"/><line x1="118" y1="141" x2="122" y2="141" stroke="#3D3833" stroke-width="3"/><rect x="152" y="172" width="28" height="22" rx="4" fill="#FFF6E3" stroke="#6E8B7B" stroke-width="2.5"/><path d="M157 180 h18 M157 186 h13" stroke="#6E8B7B" stroke-width="2"/>`,
+    jw:`<path d="M110 168 l10 9 10 -9 -5 26 -5 7 -5 -7 z" fill="#8A7BA6"/><circle cx="168" cy="104" r="13" fill="#FFF6E3" stroke="#8A7BA6" stroke-width="3"/><line x1="168" y1="104" x2="168" y2="96" stroke="#8A7BA6" stroke-width="3" stroke-linecap="round"/><line x1="168" y1="104" x2="174" y2="108" stroke="#8A7BA6" stroke-width="3" stroke-linecap="round"/>`,
+    warm:`<path d="M90 164 q30 18 60 0 l-7 16 q-23 13 -46 0 z" fill="#D98B94"/><g fill="#D98B94"><path d="M172 76 q-6 -10 -14 -3 q-6 6 3 14 l11 9 11 -9 q9 -8 3 -14 q-8 -7 -14 3 z"/><path d="M58 92 q-4 -7 -10 -2 q-4 4 2 10 l8 6 8 -6 q6 -6 2 -10 q-6 -5 -10 2 z" opacity=".65"/></g>`
+  }[type]||"";
+
+  /* 猫 / 狗 二选一，保持插画多样性 */
+  const pet=isDog?`
+    <ellipse cx="120" cy="214" rx="48" ry="8" fill="${c}33"/>
+    <path d="M92 210 q-4 -46 28 -48 q32 -2 32 26 q0 22 -10 22 z" fill="#C9A876"/>
+    <path d="M148 180 q22 2 18 -22 q-2 -10 -10 -10 q6 8 2 16 q-4 8 -10 6 z" fill="#C9A876"/>
+    <circle cx="120" cy="140" r="32" fill="#D8B88A"/>
+    <path d="M92 122 q-12 24 2 42 q8 2 8 -6 q-7 -16 -2 -32 z" fill="#B08F5C"/>
+    <path d="M148 122 q12 24 -2 42 q-8 2 -8 -6 q7 -16 2 -32 z" fill="#B08F5C"/>
+    <circle cx="109" cy="139" r="3.2" fill="#3D342A"/><circle cx="131" cy="139" r="3.2" fill="#3D342A"/>
+    <ellipse cx="120" cy="152" rx="7" ry="5.5" fill="#3D342A"/>
+    <path d="M120 158 v4 M120 162 q-5 5 -9 2 M120 162 q5 5 9 2" stroke="#3D342A" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <ellipse cx="100" cy="150" rx="4.5" ry="2.6" fill="#E89486" opacity=".5"/>
+    <ellipse cx="140" cy="150" rx="4.5" ry="2.6" fill="#E89486" opacity=".5"/>
+    <path d="M92 170 q28 12 56 0" fill="none" stroke="#7A9E7E" stroke-width="5" stroke-linecap="round"/>
+  `:`
+    <ellipse cx="120" cy="214" rx="46" ry="8" fill="${c}33"/>
+    <path d="M92 210 q-6 -44 28 -48 q34 -4 36 26 q2 22 -10 22 z" fill="#E8A97E"/>
+    <path d="M150 182 q24 4 20 -24 q-2 -12 -10 -12 q7 9 2 18 q-5 9 -12 7 z" fill="#E8A97E"/>
+    <circle cx="120" cy="140" r="32" fill="#F2BE93"/>
+    <path d="M94 116 l-6 -24 22 11 z" fill="#F2BE93"/><path d="M96 114 l-3 -14 12 6 z" fill="#E38B6B"/>
+    <path d="M146 116 l6 -24 -22 11 z" fill="#F2BE93"/><path d="M144 114 l3 -14 -12 6 z" fill="#E38B6B"/>
+    <path d="M107 142 q4 4 8 0" stroke="#5A4634" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+    <path d="M125 142 q4 4 8 0" stroke="#5A4634" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+    <path d="M116 152 q4 3 8 0" stroke="#5A4634" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    <g stroke="#B97F52" stroke-width="1.8" stroke-linecap="round">
+      <line x1="84" y1="140" x2="100" y2="142"/><line x1="84" y1="148" x2="100" y2="147"/>
+      <line x1="140" y1="140" x2="156" y2="142"/><line x1="140" y1="148" x2="156" y2="147"/>
+    </g>
+    <ellipse cx="102" cy="149" rx="4.5" ry="2.6" fill="#E89486" opacity=".55"/>
+    <ellipse cx="138" cy="149" rx="4.5" ry="2.6" fill="#E89486" opacity=".55"/>
+    <path d="M94 170 q26 11 52 0" fill="none" stroke="#D97757" stroke-width="5" stroke-linecap="round"/>
+  `;
+
+  /* 人类角色：与宠物同框，伸手轻抚 */
+  const human=`
+    <ellipse cx="224" cy="214" rx="44" ry="8" fill="${c}33"/>
+    <path d="M194 210 q2 -56 30 -58 q28 2 30 58 z" fill="${shirt}"/>
+    <path d="M198 166 q-18 10 -22 30" fill="none" stroke="${shirt}" stroke-width="12" stroke-linecap="round"/>
+    <path d="M176 196 q-12 -2 -20 -8" fill="none" stroke="#F7D9BE" stroke-width="9" stroke-linecap="round"/>
+    <circle cx="224" cy="120" r="26" fill="#F7D9BE"/>
+    <path d="M198 118 q0 -32 26 -32 q26 0 26 32 q-10 -14 -26 -12 q-16 0 -26 12 z" fill="${hair}"/>
+    <circle cx="216" cy="124" r="2.3" fill="#5A4634"/><circle cx="232" cy="124" r="2.3" fill="#5A4634"/>
+    <path d="M220 133 q4 3 8 0" stroke="#B8795C" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <ellipse cx="208" cy="130" rx="4" ry="2.4" fill="#E89486" opacity=".45"/>
+    <ellipse cx="240" cy="130" rx="4" ry="2.4" fill="#E89486" opacity=".45"/>
+    <path d="M208 148 q16 9 32 0" fill="none" stroke="#FFFFFF" stroke-width="2.5" opacity=".8"/>
+  `;
+
+  const sparkles=`
+    <g fill="#FFFFFF" opacity=".85">
+      <path d="M52 62 l2.5 6 6 2.5 -6 2.5 -2.5 6 -2.5 -6 -6 -2.5 6 -2.5 z"/>
+      <path d="M282 92 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2 z"/>
+      <circle cx="172" cy="50" r="2.5"/><circle cx="196" cy="88" r="2"/>
+    </g>
+    <path d="M168 154 q-5 -8 -11 -2 q-4 5 2 10 l9 7 9 -7 q6 -5 2 -10 q-6 -6 -11 2 z" fill="${c}" opacity=".65"/>
+  `;
+
+  return `<svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${TYPES[type].name}主题的原创通用示意插画">
+    <defs>
+      <linearGradient id="bg-${type}" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#FFF9EE"/><stop offset="1" stop-color="${c}33"/>
+      </linearGradient>
+      <clipPath id="clip-${type}"><rect x="6" y="6" width="308" height="248" rx="26"/></clipPath>
+    </defs>
+    <g clip-path="url(#clip-${type})">
+      <rect x="6" y="6" width="308" height="248" fill="url(#bg-${type})"/>
+      <circle cx="60" cy="52" r="46" fill="#FFFFFF" opacity=".35"/>
+      <circle cx="284" cy="196" r="58" fill="${c}" opacity=".10"/>
+      ${scenes}
+      <path d="M6 206 q80 -14 154 -4 q74 -10 154 8 v46 H6 z" fill="${c}22"/>
+      ${pet}
+      ${human}
+      ${acc}
+      ${sparkles}
+    </g>
+    <rect x="6" y="6" width="308" height="248" rx="26" fill="none" stroke="${c}" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round" opacity=".8"/>
+  </svg>`;
+}
+
+/* ---------- 首页 ---------- */
+function updateFresh(){
+  const fl=$("fresh-line");
+  if(fl)fl.innerHTML=`题库共 <b>${BANK.length}</b> 道原创小题 · 已解锁 <b>${loadSeen().length}</b> 题 · 每次优先抽取你没做过的题`;
+}
+function initHome(){
+  const s=load();
+  updateFresh();
+  const cont=$("continue-box"),last=$("view-last-box");
+  cont.style.display="none";last.style.display="none";
+  if(s&&s.order&&s.order.length){
+    if(s.finished&&s.bestType){last.style.display="block";}
+    else{cont.style.display="block";}
+  }
+}
+document.querySelectorAll(".mode").forEach(btn=>{
+  btn.addEventListener("click",()=>startTest(+btn.dataset.count));
+});
+$("btn-continue").addEventListener("click",()=>{
+  const s=load();if(!s)return;
+  Object.assign(S,s);S.finished=false;
+  show("quiz");renderQ();
+});
+$("btn-view-last").addEventListener("click",()=>{
+  const s=load();if(!s)return;
+  Object.assign(S,s);
+  renderResult(s.bestType);
+});
+
+/* ---------- 开始 / 答题 ---------- */
+function startTest(n){
+  const order=pickQuestions(Math.min(n,BANK.length));
+  /* 每题主题标签：按题库顺序分段主题 */
+  const themeIdx=order.map(i=>Math.min(THEMES.length-1,Math.floor(i/10)));
+  S.order=order;S.answers=Array(n).fill(-1);S.idx=0;S.count=n;S.finished=false;S.themeIdx=themeIdx;
+  save();show("quiz");renderQ();
+}
+function renderQ(){
+  const qi=S.idx,q=BANK[S.order[qi]];
+  $("q-now").textContent=qi+1;
+  $("q-total").textContent=S.count;
+  $("progress-bar").style.width=(S.answers.filter(a=>a>=0).length/S.count*100)+"%";
+  $("q-theme").textContent=THEMES[S.themeIdx[qi]]||"日常观察";
+  $("q-text").textContent=q[0];
+  const letters=["A","B","C","D"];
+  $("opts").innerHTML=q[1].map((o,i)=>
+    `<button class="opt${S.answers[qi]===i?" selected":""}" data-i="${i}">
+       <span class="letter">${letters[i]}</span><span>${o[0]}</span>
+     </button>`).join("");
+  $("opts").querySelectorAll(".opt").forEach(el=>{
+    el.addEventListener("click",()=>pick(+el.dataset.i));
+  });
+  $("btn-prev").disabled=qi===0;
+  $("btn-next").textContent=qi===S.count-1?"查看结果":"下一题 →";
+  /* 圆点导航 */
+  $("dots").innerHTML=S.order.map((_,i)=>
+    `<button class="dot${S.answers[i]>=0?" answered":""}${i===qi?" current":""}" data-i="${i}" title="第${i+1}题">${i+1}</button>`).join("");
+  $("dots").querySelectorAll(".dot").forEach(el=>{
+    el.addEventListener("click",()=>{S.idx=+el.dataset.i;save();renderQ();});
+  });
+}
+function pick(i){
+  S.answers[S.idx]=i;save();
+  renderQ();
+  if(S.idx<S.count-1){
+    setTimeout(()=>{if(S.answers[S.idx]===i&&S.idx<S.count-1){S.idx++;save();renderQ();}},300);
+  }
+}
+$("btn-prev").addEventListener("click",()=>{
+  if(S.idx>0){S.idx--;save();renderQ();}
+});
+$("btn-next").addEventListener("click",()=>{
+  if(S.idx<S.count-1){
+    if(S.answers[S.idx]<0){
+      toast("这道题还没作答哦，选一个再走吧");
+      const c=$("q-card");c.style.animation="none";void c.offsetWidth;c.style.animation="";
+      return;
+    }
+    S.idx++;save();renderQ();
+  }else{
+    submitTest();
+  }
+});
+function submitTest(){
+  const miss=S.answers.findIndex(a=>a<0);
+  if(miss>=0){
+    const dots=$("dots").querySelectorAll(".dot");
+    if(dots[miss]){dots[miss].classList.add("miss-shake");setTimeout(()=>dots[miss]&&dots[miss].classList.remove("miss-shake"),900);}
+    S.idx=miss;save();renderQ();
+    toast(`还有 ${S.answers.filter(a=>a<0).length} 题没作答，先补上第 ${miss+1} 题 🐾`);
+    return;
+  }
+  const {scores,best}=computeResult();
+  markSeen(S.order);
+  updateFresh();
+  S.finished=true;save();
+  try{localStorage.setItem(KEY,JSON.stringify({order:S.order,answers:S.answers,idx:S.idx,count:S.count,finished:true,themeIdx:S.themeIdx,bestType:best}));}catch(e){}
+  renderResult(best);
+}
+$("btn-quit").addEventListener("click",()=>{
+  save();initHome();show("home");
+  toast("进度已保存，随时回来继续");
+});
+
+/* ---------- 结果页 ---------- */
+function renderResult(best){
+  const t=TYPES[best],scores=computeResult().scores,bars=computeBars(scores);
+  $("r-name").textContent=t.name;
+  $("r-slogan").textContent="「 "+t.slogan+" 」";
+  $("r-report").textContent=t.report;
+  $("r-story").textContent=t.story;
+  $("r-illus").innerHTML=petSVG(best);
+  $("r-caption").textContent=`原创主题插画 · 通用示意 · ${t.name} · 人间小传 No.${String(TYPE_ORDER.indexOf(best)+1).padStart(2,"0")}`;
+  const colors={活力值:"#E58F5A",黏人度:"#D98B94",自律度:"#8A7BA6",艺术感:"#B07BA6"};
+  $("r-bars").innerHTML=Object.keys(bars).map(k=>{
+    const v=bars[k];
+    return `<div class="bar-row">
+      <div class="bar-label"><span>${k}</span><b>${v}%</b></div>
+      <div class="bar-track"><div class="bar-fill" data-w="${v}" style="background:${colors[k]}"></div></div>
+    </div>`;
+  }).join("");
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    $("r-bars").querySelectorAll(".bar-fill").forEach(el=>el.style.width=el.dataset.w+"%");
+  }));
+  $("r-tips").innerHTML=t.tips.map((tip,i)=>
+    `<li><span class="tip-no">0${i+1}</span><span>${tip}</span></li>`).join("");
+  $("r-chips").innerHTML=
+    `<span class="chip"><b>人间职业</b>${t.job}</span>
+     <span class="chip"><b>口头禅</b>${t.quote}</span>`;
+  show("result");
+}
+$("btn-edit").addEventListener("click",()=>{
+  S.finished=false;S.idx=0;save();show("quiz");renderQ();
+});
+$("btn-retry").addEventListener("click",()=>{
+  clearSave();startTest(S.count||10);
+  toast("题序已重新洗牌，看看这次答案会不会不同");
+});
+
+/* ---------- 启动 ---------- */
+initHome();
+</script>
+</body>
+</html>
